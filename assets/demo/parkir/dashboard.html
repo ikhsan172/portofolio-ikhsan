@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+<script src="assets/js/demo.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="demo">
+    <meta name="robots" content="noindex">
+    <title>Dashboard · Parkir Tertib</title>
+    <link rel="stylesheet" href="assets/css/app.css" /><script defer src="assets/js/app.js"></script>    </head>
+<body class="min-h-full font-sans">
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-64 -translate-x-full flex-col bg-navy-900 text-navy-100 transition-transform lg:translate-x-0" aria-label="Menu utama">
+    <div class="flex h-16 items-center justify-between border-b border-navy-800 px-5">
+        <a href="dashboard.html" class="flex items-center gap-2 text-lg font-bold text-white">
+            <span class="grid size-9 place-items-center rounded-lg bg-primary-600"><i data-lucide="car" class="size-5 shrink-0 size-5" aria-hidden="true"></i>
+</span>
+            Parkir Tertib
+        </a>
+        <button type="button" data-sidebar-toggle class="rounded-lg p-1.5 hover:bg-navy-800 lg:hidden" aria-label="Tutup menu"><i data-lucide="x" class="size-5 shrink-0" aria-hidden="true"></i>
+</button>
+    </div>
+
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+                                                    <a href="dashboard.html"  aria-current="page"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition bg-primary-600 text-white">
+                    <i data-lucide="layout-dashboard" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Dashboard</span>
+                                    </a>
+                                                                <a href="parking-locations.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="map-pin" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Data Titik Parkir</span>
+                                    </a>
+                                                                <a href="map.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="map" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Peta Persebaran</span>
+                                    </a>
+                                                                <a href="reports.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="file-warning" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Laporan Parkir Liar</span>
+                    <span class="rounded-full bg-amber-500 px-2 py-0.5 text-xs font-semibold text-white">15</span>                </a>
+                                                                <a href="enforcement-tasks.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="siren" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Penertiban</span>
+                                    </a>
+                                                                <a href="areas.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="building-2" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Data Wilayah</span>
+                                    </a>
+                                                                <a href="violation-categories.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="tags" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Kategori Pelanggaran</span>
+                                    </a>
+                                                                <a href="analytics.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="chart-column" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Laporan dan Statistik</span>
+                                    </a>
+                                                                <a href="users.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="users" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Manajemen Pengguna</span>
+                                    </a>
+                                                                <a href="settings.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="settings" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Pengaturan</span>
+                                    </a>
+                        </nav>
+
+    <div class="border-t border-navy-800 p-4 text-xs text-navy-300">
+        <p class="font-semibold text-white">Super Admin</p>
+        <p>Super Admin</p>
+    </div>
+</aside>
+    <div id="sidebar-overlay" data-sidebar-toggle class="fixed inset-0 z-30 hidden bg-navy-950/50 lg:hidden"></div>
+
+    <div class="flex min-h-screen min-w-0 flex-col lg:pl-64">
+        <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-3 border-b border-slate-200 bg-white px-4 sm:px-6">
+    <div class="flex items-center gap-3">
+        <button type="button" data-sidebar-toggle class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden" aria-label="Buka menu"><i data-lucide="menu" class="size-5 shrink-0" aria-hidden="true"></i>
+</button>
+        <p class="hidden text-sm text-slate-500 sm:block">Senin, 02 November 2026</p>
+    </div>
+    <div class="flex items-center gap-3">
+        <a href="settings.html" class="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-slate-100">
+            <span class="grid size-8 place-items-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700">S</span>
+            <span class="hidden text-left leading-tight sm:block">
+                <span class="block text-sm font-semibold text-slate-800">Super Admin</span>
+                <span class="block text-xs text-slate-500">Super Admin</span>
+            </span>
+        </a>
+        <form method="POST" action="login.html" data-nav="login.html">
+            <input type="hidden" name="_token" value="demo" autocomplete="off">            <button type="submit" class="btn btn-secondary btn-sm" title="Keluar"><i data-lucide="log-out" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+<span class="hidden sm:inline">Keluar</span></button>
+        </form>
+    </div>
+</header>
+        <main class="flex-1 p-4 sm:p-6 lg:p-8">
+                        <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div class="min-w-0">
+                    <nav aria-label="Breadcrumb" class="mb-1 flex flex-wrap items-center gap-1 text-xs text-slate-500">
+                                                                                <span class="font-medium text-slate-700">Dashboard</span>
+                                                </nav>
+                <h1 class="text-2xl font-bold tracking-tight text-navy-900">Dashboard</h1>
+        <p class="mt-1 text-sm text-slate-500">Ringkasan data pendataan, laporan, dan penertiban parkir liar.</p>    </div>
+    <div class="flex flex-wrap items-center gap-2"><a href="parking-locations_create.html" class="btn btn-primary"><i data-lucide="plus" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Tambah titik</a></div></div>
+
+<div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <a  href="parking-locations.html"  class="card flex items-center gap-4 transition hover:border-primary-200 hover:shadow-md">
+    <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600"><i data-lucide="map-pin" class="size-5 shrink-0 size-6" aria-hidden="true"></i>
+</span>
+    <span class="min-w-0">
+        <span class="block text-2xl font-bold leading-tight text-navy-900">30</span>
+        <span class="block truncate text-sm text-slate-500">Total titik parkir liar</span>
+    </span>
+</a>
+            <a  href="#demo-off"  class="card flex items-center gap-4 transition hover:border-primary-200 hover:shadow-md">
+    <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-sky-50 text-sky-600"><i data-lucide="inbox" class="size-5 shrink-0 size-6" aria-hidden="true"></i>
+</span>
+    <span class="min-w-0">
+        <span class="block text-2xl font-bold leading-tight text-navy-900">26</span>
+        <span class="block truncate text-sm text-slate-500">Laporan masyarakat</span>
+    </span>
+</a>
+            <a  href="#demo-off"  class="card flex items-center gap-4 transition hover:border-primary-200 hover:shadow-md">
+    <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-violet-50 text-violet-600"><i data-lucide="file-warning" class="size-5 shrink-0 size-6" aria-hidden="true"></i>
+</span>
+    <span class="min-w-0">
+        <span class="block text-2xl font-bold leading-tight text-navy-900">14</span>
+        <span class="block truncate text-sm text-slate-500">Laporan petugas</span>
+    </span>
+</a>
+            <a  href="#demo-off"  class="card flex items-center gap-4 transition hover:border-primary-200 hover:shadow-md">
+    <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-amber-50 text-amber-600"><i data-lucide="clock" class="size-5 shrink-0 size-6" aria-hidden="true"></i>
+</span>
+    <span class="min-w-0">
+        <span class="block text-2xl font-bold leading-tight text-navy-900">15</span>
+        <span class="block truncate text-sm text-slate-500">Menunggu verifikasi</span>
+    </span>
+</a>
+            <a  href="#demo-off"  class="card flex items-center gap-4 transition hover:border-primary-200 hover:shadow-md">
+    <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-orange-50 text-orange-600"><i data-lucide="siren" class="size-5 shrink-0 size-6" aria-hidden="true"></i>
+</span>
+    <span class="min-w-0">
+        <span class="block text-2xl font-bold leading-tight text-navy-900">10</span>
+        <span class="block truncate text-sm text-slate-500">Penertiban berlangsung</span>
+    </span>
+</a>
+            <a  href="#demo-off"  class="card flex items-center gap-4 transition hover:border-primary-200 hover:shadow-md">
+    <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-green-50 text-green-600"><i data-lucide="circle-check" class="size-5 shrink-0 size-6" aria-hidden="true"></i>
+</span>
+    <span class="min-w-0">
+        <span class="block text-2xl font-bold leading-tight text-navy-900">7</span>
+        <span class="block truncate text-sm text-slate-500">Titik sudah ditertibkan</span>
+    </span>
+</a>
+    </div>
+
+<div class="mt-6 grid gap-4 xl:grid-cols-3">
+    <div class="card xl:col-span-2">
+    <h3 class="text-sm font-semibold text-navy-900">Laporan bulanan (12 bulan terakhir)</h3>
+    <div class="relative mt-4 h-64" data-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Des 2025&quot;,&quot;Jan 2026&quot;,&quot;Feb 2026&quot;,&quot;Mar 2026&quot;,&quot;Apr 2026&quot;,&quot;Mei 2026&quot;,&quot;Jun 2026&quot;,&quot;Jul 2026&quot;,&quot;Agt 2026&quot;,&quot;Sep 2026&quot;,&quot;Okt 2026&quot;,&quot;Nov 2026&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Masyarakat&quot;,&quot;data&quot;:[3,0,2,2,2,1,5,3,4,3,1,0],&quot;backgroundColor&quot;:&quot;#2563eb&quot;,&quot;borderRadius&quot;:6},{&quot;label&quot;:&quot;Petugas&quot;,&quot;data&quot;:[1,4,1,0,1,1,1,2,1,2,0,0],&quot;backgroundColor&quot;:&quot;#94a3b8&quot;,&quot;borderRadius&quot;:6}]},&quot;stacked&quot;:true}">
+        <div data-state="loading" class="absolute inset-0 animate-pulse rounded-lg bg-slate-100"></div>
+        <div data-state="empty" class="absolute inset-0 hidden place-items-center text-sm text-slate-500 [&:not(.hidden)]:grid">Belum ada data untuk ditampilkan</div>
+        <div data-state="error" class="absolute inset-0 hidden place-items-center text-sm text-red-600 [&:not(.hidden)]:grid">Grafik gagal dimuat</div>
+        <canvas></canvas>
+    </div>
+</div>
+    <div class="card">
+    <h3 class="text-sm font-semibold text-navy-900">Status penertiban</h3>
+    <div class="relative mt-4 h-64" data-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Terjadwal&quot;,&quot;Berlangsung&quot;,&quot;Selesai&quot;,&quot;Dibatalkan&quot;],&quot;datasets&quot;:[{&quot;data&quot;:[0,10,10,0],&quot;backgroundColor&quot;:[&quot;#3b82f6&quot;,&quot;#f97316&quot;,&quot;#16a34a&quot;,&quot;#94a3b8&quot;],&quot;borderWidth&quot;:2}]}}">
+        <div data-state="loading" class="absolute inset-0 animate-pulse rounded-lg bg-slate-100"></div>
+        <div data-state="empty" class="absolute inset-0 hidden place-items-center text-sm text-slate-500 [&:not(.hidden)]:grid">Belum ada data untuk ditampilkan</div>
+        <div data-state="error" class="absolute inset-0 hidden place-items-center text-sm text-red-600 [&:not(.hidden)]:grid">Grafik gagal dimuat</div>
+        <canvas></canvas>
+    </div>
+</div>
+    <div class="card xl:col-span-1">
+    <h3 class="text-sm font-semibold text-navy-900">Pelanggaran per kategori</h3>
+    <div class="relative mt-4 h-64" data-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Parkir di badan jalan&quot;,&quot;Parkir di atas trotoar&quot;,&quot;Parkir di area larangan (rambu)&quot;,&quot;Parkir menghalangi akses\/pagar&quot;,&quot;Parkir ganda&quot;,&quot;Juru parkir tanpa izin&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Titik parkir&quot;,&quot;data&quot;:[7,6,5,4,4,4],&quot;backgroundColor&quot;:&quot;#1a2c4d&quot;,&quot;borderRadius&quot;:6}]}}">
+        <div data-state="loading" class="absolute inset-0 animate-pulse rounded-lg bg-slate-100"></div>
+        <div data-state="empty" class="absolute inset-0 hidden place-items-center text-sm text-slate-500 [&:not(.hidden)]:grid">Belum ada data untuk ditampilkan</div>
+        <div data-state="error" class="absolute inset-0 hidden place-items-center text-sm text-red-600 [&:not(.hidden)]:grid">Grafik gagal dimuat</div>
+        <canvas></canvas>
+    </div>
+</div>
+    <div class="card xl:col-span-2">
+    <h3 class="text-sm font-semibold text-navy-900">Statistik titik parkir per kecamatan</h3>
+    <div class="relative mt-4 h-72" data-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Babakan Ciparay&quot;,&quot;Sukajadi&quot;,&quot;Bandung Kulon&quot;,&quot;Bojongloa Kidul&quot;,&quot;Cibiru&quot;,&quot;Lengkong&quot;,&quot;Rancasari&quot;,&quot;Sukasari&quot;,&quot;Ujungberung&quot;,&quot;Astanaanyar&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Titik parkir&quot;,&quot;data&quot;:[3,3,2,2,2,2,2,2,2,1],&quot;backgroundColor&quot;:&quot;#2563eb&quot;,&quot;borderRadius&quot;:6}]},&quot;indexAxis&quot;:&quot;y&quot;}">
+        <div data-state="loading" class="absolute inset-0 animate-pulse rounded-lg bg-slate-100"></div>
+        <div data-state="empty" class="absolute inset-0 hidden place-items-center text-sm text-slate-500 [&:not(.hidden)]:grid">Belum ada data untuk ditampilkan</div>
+        <div data-state="error" class="absolute inset-0 hidden place-items-center text-sm text-red-600 [&:not(.hidden)]:grid">Grafik gagal dimuat</div>
+        <canvas></canvas>
+    </div>
+</div>
+</div>
+
+
+<div class="mt-6 grid gap-4 xl:grid-cols-3">
+    <section class="card p-0 xl:col-span-2">
+        <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+            <h2 class="text-sm font-semibold text-navy-900">Lokasi prioritas</h2>
+            <a href="parking-locations.html" class="text-sm font-medium text-primary-700 hover:underline">Lihat semua</a>
+        </div>
+                    <a href="parking-locations_3.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">Depan Dago #3</p>
+                    <p class="truncate text-xs text-slate-500">PT-2026-00003 &middot; Ujungberung &middot; Parkir di badan jalan</p>
+                </div>
+                <div class="flex shrink-0 gap-1.5"><span class="badge bg-red-100 text-red-700">Kritis</span>
+<span class="badge bg-orange-100 text-orange-700">Dalam proses</span>
+</div>
+            </a>
+                    <a href="parking-locations_27.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">Depan Jl. Otista #27</p>
+                    <p class="truncate text-xs text-slate-500">PT-2026-00027 &middot; Sumur Bandung &middot; Parkir ganda</p>
+                </div>
+                <div class="flex shrink-0 gap-1.5"><span class="badge bg-red-100 text-red-700">Kritis</span>
+<span class="badge bg-yellow-100 text-yellow-800">Perlu dipantau</span>
+</div>
+            </a>
+                    <a href="parking-locations_19.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">Depan Pasar Kosambi #19</p>
+                    <p class="truncate text-xs text-slate-500">PT-2026-00019 &middot; Cibiru &middot; Parkir di badan jalan</p>
+                </div>
+                <div class="flex shrink-0 gap-1.5"><span class="badge bg-red-100 text-red-700">Kritis</span>
+<span class="badge bg-red-100 text-red-700">Belum ditangani</span>
+</div>
+            </a>
+                    <a href="parking-locations_14.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">Depan Dago #14</p>
+                    <p class="truncate text-xs text-slate-500">PT-2026-00014 &middot; Cicendo &middot; Parkir ganda</p>
+                </div>
+                <div class="flex shrink-0 gap-1.5"><span class="badge bg-red-100 text-red-700">Kritis</span>
+<span class="badge bg-red-100 text-red-700">Belum ditangani</span>
+</div>
+            </a>
+                    <a href="parking-locations_2.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">Depan Stasiun Bandung #2</p>
+                    <p class="truncate text-xs text-slate-500">PT-2026-00002 &middot; Sukajadi &middot; Juru parkir tanpa izin</p>
+                </div>
+                <div class="flex shrink-0 gap-1.5"><span class="badge bg-red-100 text-red-700">Kritis</span>
+<span class="badge bg-red-100 text-red-700">Belum ditangani</span>
+</div>
+            </a>
+                    <a href="parking-locations_18.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">Depan Jl. Braga #18</p>
+                    <p class="truncate text-xs text-slate-500">PT-2026-00018 &middot; Babakan Ciparay &middot; Parkir di area larangan (rambu)</p>
+                </div>
+                <div class="flex shrink-0 gap-1.5"><span class="badge bg-red-100 text-red-700">Kritis</span>
+<span class="badge bg-yellow-100 text-yellow-800">Perlu dipantau</span>
+</div>
+            </a>
+            </section>
+
+    <section class="card p-0">
+        <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+            <h2 class="text-sm font-semibold text-navy-900">Ringkasan peta</h2>
+            <a href="map.html" class="text-sm font-medium text-primary-700 hover:underline">Buka peta</a>
+        </div>
+        <div class="relative">
+            <div data-mini-map data-url="map/data?limit=200" class="z-0 h-64"></div>
+            <div data-state="loading" class="absolute inset-0 z-10 animate-pulse place-items-center bg-slate-100 text-sm text-slate-500 [&:not(.hidden)]:grid">Memuat peta…</div>
+            <div data-state="empty" class="absolute inset-0 z-10 hidden place-items-center bg-white/90 text-sm text-slate-500 [&:not(.hidden)]:grid">Belum ada titik untuk ditampilkan</div>
+            <div data-state="error" class="absolute inset-0 z-10 hidden place-items-center bg-white/90 text-sm text-red-600 [&:not(.hidden)]:grid">Peta gagal dimuat</div>
+        </div>
+    </section>
+</div>
+
+<div class="mt-6 grid gap-4 xl:grid-cols-2">
+        <section class="card p-0">
+        <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+            <h2 class="text-sm font-semibold text-navy-900">Laporan terbaru</h2>
+            <a href="reports.html" class="text-sm font-medium text-primary-700 hover:underline">Semua laporan</a>
+        </div>
+                    <a href="reports_14.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">RPT-2026-00014 &middot; Parkir di badan jalan</p>
+                    <p class="truncate text-xs text-slate-500">Arcamanik &middot; 3 minggu yang lalu</p>
+                </div>
+                <span class="badge bg-green-100 text-green-700">Selesai</span>
+            </a>
+                    <a href="reports_34.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">RPT-2026-00034 &middot; Parkir di area larangan (rambu)</p>
+                    <p class="truncate text-xs text-slate-500">Kiaracondong &middot; 1 bulan yang lalu</p>
+                </div>
+                <span class="badge bg-red-100 text-red-700">Ditolak</span>
+            </a>
+                    <a href="reports_19.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">RPT-2026-00019 &middot; Juru parkir tanpa izin</p>
+                    <p class="truncate text-xs text-slate-500">Sumur Bandung &middot; 1 bulan yang lalu</p>
+                </div>
+                <span class="badge bg-blue-100 text-blue-700">Terverifikasi</span>
+            </a>
+                    <a href="reports_30.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">RPT-2026-00030 &middot; Parkir di atas trotoar</p>
+                    <p class="truncate text-xs text-slate-500">Mandalajati &middot; 1 bulan yang lalu</p>
+                </div>
+                <span class="badge bg-green-100 text-green-700">Selesai</span>
+            </a>
+                    <a href="reports_6.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">RPT-2026-00006 &middot; Parkir di badan jalan</p>
+                    <p class="truncate text-xs text-slate-500">Cibeunying Kidul &middot; 1 bulan yang lalu</p>
+                </div>
+                <span class="badge bg-blue-100 text-blue-700">Terverifikasi</span>
+            </a>
+                    <a href="reports_8.html" class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3 last:border-0 hover:bg-slate-50">
+                <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-800">RPT-2026-00008 &middot; Parkir ganda</p>
+                    <p class="truncate text-xs text-slate-500">Batununggal &middot; 2 bulan yang lalu</p>
+                </div>
+                <span class="badge bg-red-100 text-red-700">Ditolak</span>
+            </a>
+            </section>
+    
+        <section class="card p-0">
+        <div class="border-b border-slate-200 px-5 py-4"><h2 class="text-sm font-semibold text-navy-900">Aktivitas terbaru</h2></div>
+                    <div class="flex items-start gap-3 border-b border-slate-100 px-5 py-3 last:border-0">
+                <span class="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-slate-100 text-slate-500"><i data-lucide="history" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+</span>
+                <div class="min-w-0">
+                    <p class="text-sm text-slate-700">Data contoh dibuat</p>
+                    <p class="text-xs text-slate-400">Admin Dishub &middot; 5 jam yang lalu</p>
+                </div>
+            </div>
+            </section>
+    </div>
+        </main>
+        <footer class="px-6 py-4 text-center text-xs text-slate-400">
+            Parkir Tertib &middot; Sistem Informasi Pendataan, Pemetaan, dan Penertiban Parkir Liar
+        </footer>
+    </div>
+
+        <script defer src="assets/js/charts.js"></script><script defer src="assets/js/mini-map.js"></script></body>
+</html>

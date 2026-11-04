@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajukan Permohonan - PPID Disperkim Jabar</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body style="background-color: #f3f4f6;">
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo_disperkim.png" alt="Disperkim Jabar Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#beranda">Beranda</a>
+                <a href="index.html#profil">Profil</a>
+                <div class="dropdown">
+                    <a href="index.html#layanan" style="display: flex; align-items: center; gap: 0.25rem;">Layanan
+                        Publik</a>
+                    <div class="dropdown-content">
+                        <a href="index.html#layanan">Daftar Layanan</a>
+                        <a href="maklumat.html">Maklumat Layanan</a>
+                        <a href="visi-misi.html">Visi, Misi & Moto</a>
+                        <a href="pengaduan.html">Pengaduan Online</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="#" style="display: flex; align-items: center; gap: 0.25rem;">PPID</a>
+                    <div class="dropdown-content">
+                        <a href="ppid-ajukan.html">Ajukan Permohonan</a>
+                        <a href="ppid-lacak.html">Lacak Permohonan</a>
+                    </div>
+                </div>
+                <a href="index.html#berita">Berita</a>
+                                    <a href="login.html" class="btn btn-primary">Login</a>
+                            </div>
+            <div class="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding: 3rem 0; max-width: 800px; margin-top: 80px;">
+        <div style="background: white; padding: 2.5rem; border-radius: 1rem; box-shadow: var(--shadow);">
+            <h2 style="margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem;">Formulir Permohonan
+                Informasi</h2>
+
+            
+            <form action="#" method="POST">
+                <input type="hidden" name="_token" value="OBETMe2uaIWEeFsQaGXTLGyHZ9QCp9LbPpJHapKa" autocomplete="off">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="form-group">
+                        <label class="form-label">NIK (Nomor Anggota Kependudukan)</label>
+                        <input type="number" name="nik" class="form-input" value=""
+                            placeholder="16 Digit NIK" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Nama Lengkap</label>
+                        <input type="text" name="nama" class="form-input"
+                            value="" required>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="form-group">
+                        <label class="form-label">Nomor Telepon / WhatsApp</label>
+                        <input type="number" name="no_telepon" class="form-input" value=""
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-input"
+                            value="" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Alamat Lengkap</label>
+                    <textarea name="alamat" class="form-input" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Pekerjaan</label>
+                    <input type="text" name="pekerjaan" class="form-input" value="" required>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 2rem 0;">
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="form-group">
+                        <label class="form-label">Cara Memperoleh Informasi</label>
+                        <select name="cara_memperoleh_informasi" class="form-select" required>
+                            <option value="">-- Pilih --</option>
+                            <option value="Melihat/Membaca/Mendengarkan">Melihat/Membaca/Mendengarkan</option>
+                            <option value="Mendapatkan Salinan Informasi">Mendapatkan Salinan Informasi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Cara Mendapatkan Salinan</label>
+                        <select name="cara_mendapatkan_salinan" class="form-select" required>
+                            <option value="">-- Pilih --</option>
+                            <option value="Mengambil Langsung">Mengambil Langsung</option>
+                            <option value="Kurir / Pos">Kurir / Pos</option>
+                            <option value="Faksimili">Faksimili</option>
+                            <option value="Email">Email</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Rincian Informasi yang Dibutuhkan</label>
+                    <textarea name="rincian_informasi" class="form-input" rows="4"
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tujuan Penggunaan Informasi</label>
+                    <textarea name="tujuan_informasi" class="form-input" rows="3"
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Kategori Pemohon</label>
+                    <select name="pemohon_informasi" class="form-select" required>
+                        <option value="">-- Pilih --</option>
+                        <option value="Perorangan">Perorangan</option>
+                        <option value="Kelompok Orang">Kelompok Orang</option>
+                        <option value="Badan Hukum">Badan Hukum</option>
+                    </select>
+                </div>
+
+                <div class="form-group"
+                    style="background: #eef2ff; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #c7d2fe;">
+                    <label class="form-label" style="color: #3730a3;">Keamanan (Captcha)</label>
+                    <p style="margin-bottom: 0.5rem; font-size: 0.9rem; color: #4338ca;">Ketik kode verifikasi di bawah
+                        ini:</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="
+                                font-family: 'Courier New', monospace;
+                                font-weight: 800;
+                                font-size: 1.75rem;
+                                letter-spacing: 6px;
+                                background-image: repeating-linear-gradient(45deg, #e0e7ff 0, #e0e7ff 2px, transparent 0, transparent 50%);
+                                background-color: #c7d2fe;
+                                padding: 0.75rem 1.5rem;
+                                border-radius: 0.5rem;
+                                color: #312e81;
+                                user-select: none;
+                                text-align: center;
+                                border: 2px dashed #818cf8;
+                            ">
+                                SLCAIH
+                            </div>
+                        </div>
+                        <input type="text" name="captcha" class="form-input" style="width: 100%; max-width: 250px;"
+                            required placeholder="Masukkan Kode Captcha" autocomplete="off">
+                        <small style="color: #6b7280;">Kode tidak sensitif huruf besar/kecil.</small>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: right;">
+                    <button type="submit" class="btn btn-primary" style="padding: 1rem 2rem;">Kirim Permohonan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+<style>.demo-badge{position:fixed;right:12px;bottom:12px;z-index:99999;background:rgba(15,23,42,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none;letter-spacing:.2px}</style>
+<div class="demo-badge">Mode demo &middot; formulir tidak mengirim data</div>
+<script>document.addEventListener('submit',function(e){e.preventDefault();alert('Ini versi demo statis. Formulir tidak mengirim data.');},true);</script>
+</body>
+
+</html>

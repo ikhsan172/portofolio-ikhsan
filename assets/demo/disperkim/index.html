@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Website Resmi Dinas Perumahan dan Permukiman Jawa Barat. Membangun Hunian, Menata Kehidupan.">
+    <title>Disperkim Jawa Barat - Housing & Settlement Service</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="assets/images/logo_disperkim.png" alt="Disperkim Jabar Logo">
+            </a>
+            <div class="nav-links">
+                <a href="#beranda">Beranda</a>
+                <a href="#profil">Profil</a>
+                <div class="dropdown">
+                    <a href="#layanan" style="display: flex; align-items: center; gap: 0.25rem;">Layanan Publik</a>
+                    <div class="dropdown-content">
+                        <a href="#layanan">Daftar Layanan</a>
+                        <a href="maklumat.html">Maklumat Layanan</a>
+                        <a href="visi-misi.html">Visi, Misi & Moto</a>
+                        <a href="pengaduan.html">Pengaduan Online</a>
+                    </div>
+                </div>
+
+
+                <div class="dropdown">
+                    <a href="#" style="display: flex; align-items: center; gap: 0.25rem;">PPID</a>
+                    <div class="dropdown-content">
+                        <a href="ppid-ajukan.html">Ajukan Permohonan</a>
+                        <a href="ppid-lacak.html">Lacak Permohonan</a>
+                    </div>
+                </div>
+                <a href="#berita">Berita</a>
+                                    <a href="login.html" class="btn btn-primary">Login</a>
+                            </div>
+            <div class="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+        <div class="container"
+            style="display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+            <div class="hero-content" style="flex: 1; min-width: 300px;">
+                <div class="glass-badge">
+                    <i class="fa-solid fa-check-circle"></i> Terpercaya & Transparan
+                </div>
+                <h1>Membangun Hunian,<br>Menata Kehidupan</h1>
+                <p>Mewujudkan perumahan dan permukiman yang layak, terjangkau, dan berkelanjutan menuju Jawa Barat
+                    Juara.</p>
+                <div class="hero-btns">
+                    <a href="#layanan" class="btn btn-primary" style="margin-right: 1rem;">Layanan Kami</a>
+                    <a href="#program" class="btn btn-secondary">Program 2026</a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Requirement 9: Simpan status agar suara hanya diputar satu kali per sesi
+            if (sessionStorage.getItem('welcome_sound_played')) return;
+
+            const text = "Selamat datang di website resmi Dinas Perumahan dan Permukiman Jawa Barat. Website ini menyediakan layanan informasi dan pengaduan online bagi masyarakat.";
+
+            function performSpeak() {
+                if (!window.speechSynthesis) return;
+
+                // Requirement 4 & 5: Memastikan daftar suara sudah dimuat
+                let voices = window.speechSynthesis.getVoices();
+
+                function executeVoice() {
+                    window.speechSynthesis.cancel(); // Reset playback
+
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'id-ID';
+                    utterance.rate = 1;
+                    utterance.pitch = 1;
+
+                    // Requirement 3: Strategi Prioritas Suara (Updated for Windows/Chrome)
+                    let targetVoice = null;
+
+                    // a) Cari voice "Google Bahasa Indonesia" (Chrome - biasanya Perempuan)
+                    targetVoice = voices.find(v => v.lang === 'id-ID' && v.name.includes('Google'));
+
+                    // b) Cari voice "Microsoft Gadis" (Windows - Perempuan)
+                    if (!targetVoice) targetVoice = voices.find(v => v.lang === 'id-ID' && v.name.includes('Gadis'));
+
+                    // c) Cari voice dengan label "Female" umum
+                    if (!targetVoice) targetVoice = voices.find(v => v.lang === 'id-ID' && v.name.toLowerCase().includes('female'));
+
+                    // d) Fallback: Suara Bahasa Indonesia apa saja
+                    if (!targetVoice) {
+                        targetVoice = voices.find(v => v.lang === 'id-ID');
+                        // Jika fallback (kemungkinan pria), naikkan pitch sedikit agar lebih halus
+                        if (targetVoice) utterance.pitch = 1.2;
+                    }
+
+                    if (targetVoice) utterance.voice = targetVoice;
+
+                    // Play
+                    try {
+                        window.speechSynthesis.speak(utterance);
+                        // Tandai sudah diputar
+                        sessionStorage.setItem('welcome_sound_played', 'true');
+                    } catch (e) {
+                        // Silent fail jika error/blocked
+                    }
+                }
+
+                // Requirement 4: Event listener jika voices belum siap
+                if (voices.length === 0) {
+                    window.speechSynthesis.onvoiceschanged = function () {
+                        voices = window.speechSynthesis.getVoices();
+                        executeVoice();
+                    };
+                } else {
+                    executeVoice();
+                }
+            }
+
+            // Jalankan sedikit delay untuk memastikan loading halaman tuntas
+            setTimeout(performSpeak, 500);
+        });
+    </script>
+
+
+
+    <!-- Services Section -->
+    <section id="layanan" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span>Layanan Publik</span>
+                <h2>Solusi Kebutuhan Perumahan</h2>
+                <p>Kami menyediakan berbagai layanan digital untuk mempermudah masyarakat.</p>
+            </div>
+
+            <div class="services-grid">
+
+
+
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-file-contract"></i>
+                    </div>
+                    <h3>Pengaduan Online</h3>
+                    <p>Saluran pengaduan masyarakat terkait permasalahan perumahan dan permukiman di wilayah Jabar.</p>
+                    <a href="pengaduan.html" class="read-more">Buat Laporan <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Permohonan PPID</h3>
+                    <p>Layanan permohonan informasi publik dan dokumentasi secara online, transparan, dan akuntabel.</p>
+                    <a href="ppid-ajukan.html" class="read-more">Ajukan Permohonan <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured News / Program -->
+    <section id="berita" style="padding: 5rem 0; background: white;">
+        <div class="container">
+            <div class="section-header">
+                <span>Berita Terkini</span>
+                <h2>Kabar Perumahan Jabar</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                                    <div
+                        style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: #f9fafb; border-radius: 1rem;">
+                        <p style="color: #6b7280;">Belum ada berita yang tersedia saat ini.</p>
+                    </div>
+                            </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#" class="footer-logo">DISPERKIM JABAR</a>
+                    <p style="opacity: 0.8; line-height: 1.8;">
+                        Dinas Perumahan dan Permukiman<br>
+                        Pemerintah Daerah Provinsi Jawa Barat<br>
+                        <a href="https://maps.app.goo.gl/zC6Qd" target="_blank"
+                            style="color: inherit; text-decoration: none; border-bottom: 1px dotted #fff;">Jl.
+                            Kawaluyaan Indah Raya No. 4, Bandung</a>
+                    </p>
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                        <a href="https://www.facebook.com/disperkimjabar" target="_blank"><i
+                                class="fa-brands fa-facebook fa-lg"></i></a>
+                        <a href="https://x.com/disperkimjabar?s=11" target="_blank"><i
+                                class="fa-brands fa-x-twitter fa-lg"></i></a>
+                        <a href="https://www.instagram.com/disperkimjabar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                            target="_blank"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                        <a href="https://www.youtube.com/channel/UCiz_sJuTDCGlExYnnPqpW6w" target="_blank"><i
+                                class="fa-brands fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+
+
+
+                <div class="footer-links">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#layanan">Layanan Publik</a></li>
+                        <li><a href="ppid-ajukan.html">PPID</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Jam Operasional</h4>
+                    <ul>
+                        <li>Senin - Kamis: 08:00 - 16:00</li>
+                        <li>Jumat: 08:00 - 16:30</li>
+                        <li>Sabtu - Minggu: Tutup</li>
+                    </ul>
+                </div>
+
+                <div class="footer-links" style="min-width: 300px;">
+                    <h4>Lokasi Kami</h4>
+                    <iframe <iframe
+                        src="https://maps.google.com/maps?q=Dinas+Perumahan+dan+Permukiman+Provinsi+Jawa+Barat+Jl.+Kawaluyaan+Indah+Raya+No.+4&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                        width="100%" height="200" style="border:0; border-radius: 0.5rem;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Dinas Perumahan dan Permukiman Provinsi Jawa Barat. Hak Cipta Dilindungi.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+<style>.demo-badge{position:fixed;right:12px;bottom:12px;z-index:99999;background:rgba(15,23,42,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none;letter-spacing:.2px}</style>
+<div class="demo-badge">Mode demo &middot; formulir tidak mengirim data</div>
+<script>document.addEventListener('submit',function(e){e.preventDefault();alert('Ini versi demo statis. Formulir tidak mengirim data.');},true);</script>
+</body>
+
+</html>

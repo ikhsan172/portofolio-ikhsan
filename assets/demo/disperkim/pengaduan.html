@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaduan Online - Disperkim Jabar</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .form-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-light);
+        }
+
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #a7f3d0;
+        }
+
+        .alert-error {
+            background-color: #fee2e2;
+            color: #7f1d1d;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #fecaca;
+        }
+    </style>
+</head>
+
+<body style="background-color: #f3f4f6;">
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo_disperkim.png" alt="Disperkim Jabar Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#beranda">BERANDA</a>
+                <a href="index.html#profil">PROFIL</a>
+                <div class="dropdown">
+                    <a href="#" class="active" style="display: flex; align-items: center; gap: 0.25rem;">LAYANAN
+                        PUBLIK</a>
+                    <div class="dropdown-content">
+                        <a href="maklumat.html">Maklumat Layanan</a>
+                        <a href="visi-misi.html">Visi, Misi & Moto</a>
+                        <a href="pengaduan.html">Pengaduan Online</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#" style="display: flex; align-items: center; gap: 0.25rem;">PPID</a>
+                    <div class="dropdown-content">
+                        <a href="ppid-ajukan.html">Ajukan Permohonan</a>
+                        <a href="ppid-lacak.html">Lacak Permohonan</a>
+                    </div>
+                </div>
+                <a href="index.html#berita">BERITA</a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding: 8rem 0 4rem;">
+
+        <div class="text-center" style="margin-bottom: 3rem;">
+            <h1 style="color: var(--primary); margin-bottom: 0.5rem;">Layanan Pengaduan Online</h1>
+            <p style="color: #6b7280;">Sampaikan laporan dan aspirasi Anda untuk Jawa Barat yang lebih baik</p>
+        </div>
+
+        
+        
+        <div class="form-container">
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="68spfM0BevsR3Pr4IeLQIqM6A6r2U7GWUD2IwS3F" autocomplete="off">
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" name="nama" class="form-control" required value=""
+                        placeholder="Masukkan nama lengkap">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" required value=""
+                        placeholder="contoh@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Judul Pengaduan</label>
+                    <input type="text" name="judul_pengaduan" class="form-control" required
+                        value="" placeholder="Ringkasan masalah">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Lokasi Kejadian</label>
+                    <input type="text" name="lokasi" class="form-control" required value=""
+                        placeholder="Nama jalan, desa, kecamatan, atau kota/kabupaten">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Isi Pengaduan</label>
+                    <textarea name="isi_pengaduan" class="form-control" rows="5" required
+                        placeholder="Jelaskan detail pengaduan Anda..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Upload Foto (Opsional)</label>
+                    <input type="file" name="foto" class="form-control" accept="image/*">
+                    <small style="color: #6b7280;">Format: JPG, JPEG, PNG. Maksimal 2MB.</small>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-paper-plane" style="margin-right: 0.5rem;"></i> Kirim Laporan
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer
+        style="background-color: var(--primary); color: white; padding: 2rem 0; text-align: center; margin-top: auto;">
+        <div class="container">
+            <h4 style="margin: 0 0 0.5rem; font-weight: 600; font-size: 1rem; text-transform: uppercase;">PORTAL RESMI
+                DISPERKIM JAWA BARAT</h4>
+            <p style="margin: 0 0 1rem; font-size: 0.875rem; opacity: 0.9;">
+                Jl. Kawaluyaan Indah Raya No. 4, Jatisari, Kec. Buahbatu, Kota Bandung, Jawa Barat 40286
+            </p>
+            <p style="margin: 0; font-size: 0.875rem; font-weight: 600;">
+                &copy; 2026 DISPERKIM JAWA BARAT
+            </p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+<style>.demo-badge{position:fixed;right:12px;bottom:12px;z-index:99999;background:rgba(15,23,42,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none;letter-spacing:.2px}</style>
+<div class="demo-badge">Mode demo &middot; formulir tidak mengirim data</div>
+<script>document.addEventListener('submit',function(e){e.preventDefault();alert('Ini versi demo statis. Formulir tidak mengirim data.');},true);</script>
+</body>
+
+</html>

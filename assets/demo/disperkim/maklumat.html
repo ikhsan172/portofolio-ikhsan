@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maklumat Layanan - Disperkim Jabar</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .page-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .maklumat-image {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            border-radius: 0.5rem;
+            display: inline-block;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .empty-state {
+            padding: 3rem;
+            color: #6b7280;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body style="background-color: #f3f4f6;">
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo_disperkim.png" alt="Disperkim Jabar Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#beranda">Beranda</a>
+                <a href="index.html#profil">Profil</a>
+                <a href="index.html#layanan" class="active">Layanan</a>
+                <div class="dropdown">
+                    <a href="#" style="display: flex; align-items: center; gap: 0.25rem;">PPID</a>
+                    <div class="dropdown-content">
+                        <a href="ppid-ajukan.html">Ajukan Permohonan</a>
+                        <a href="ppid-lacak.html">Lacak Permohonan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding: 8rem 0 4rem;">
+        <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+            <span
+                style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Layanan
+                Publik</span>
+            <h1 style="font-size: 2.5rem; color: var(--dark);">Maklumat Layanan</h1>
+        </div>
+
+        <div class="page-content">
+                            <div class="empty-state">
+                    <i class="fa-regular fa-image" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                    <p>Maklumat Layanan belum tersedia.</p>
+                </div>
+                    </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+
+<style>.demo-badge{position:fixed;right:12px;bottom:12px;z-index:99999;background:rgba(15,23,42,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none;letter-spacing:.2px}</style>
+<div class="demo-badge">Mode demo &middot; formulir tidak mengirim data</div>
+<script>document.addEventListener('submit',function(e){e.preventDefault();alert('Ini versi demo statis. Formulir tidak mengirim data.');},true);</script>
+</body>
+
+</html>

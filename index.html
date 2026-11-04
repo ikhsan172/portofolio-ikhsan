@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Portofolio Ikhsan Saputra — Web Developer di Bandung.">
+  <meta name="theme-color" content="#030712">
+  <title>Ikhsan Saputra | Portofolio</title>
+
+  <!-- Google Font API: Plus Jakarta Sans, Poppins, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Libraries: Three.js (3D Graphics), GSAP (Animations + ScrollTrigger), Lucide (Icons) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Project Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Project JavaScript (Deferred) -->
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <!-- 3D Canvas Background & Meteors -->
+  <div class="fx" aria-hidden="true">
+    <canvas id="stars"></canvas>
+  </div>
+  <div class="fx meteor-background" aria-hidden="true">
+    <i style="left: 25%"></i>
+    <i style="left: 55%; animation-delay: 2.5s"></i>
+    <i style="left: 80%; animation-delay: 4.2s"></i>
+    <i style="left: 95%; animation-delay: 1.1s"></i>
+  </div>
+
+  <div class="ui">
+    <!-- Navigation Header -->
+    <header>
+      <nav class="nav-bar">
+        <ul id="nav">
+          <li><a href="#Home" class="on">Home</a></li>
+          <li><a href="#About">About</a></li>
+          <li><a href="#Portfolio">Portfolio</a></li>
+          <li><a href="#Contact">Contact</a></li>
+        </ul>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <button id="sfxToggle" class="sfx-btn active" aria-label="Nyalakan atau matikan suara SFX" title="Suara SFX: Aktif (Klik untuk matikan)" aria-pressed="true">
+          <i data-lucide="volume-2" id="sfxIcon"></i>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="Home" class="scroll-fx hero-scroll-fx">
+        <div>
+          <h1><span class="grad">Welcome to</span>My Portfolio</h1>
+          <p class="type" id="type"></p>
+          <div class="lead">
+            <p>Halo, saya Ikhsan, seorang Web Developer dan lulusan Informatika dari Universitas Komputer Indonesia (UNIKOM), Bandung.</p>
+            <p>Saya memiliki ketertarikan dalam pengembangan aplikasi berbasis web, mulai dari perancangan database, pengembangan backend, hingga membangun antarmuka yang responsif dan mudah digunakan. Saya terbiasa menggunakan Laravel dan berbagai teknologi web untuk mengembangkan aplikasi yang fungsional dan terstruktur.</p>
+            <p>Melalui portofolio ini, saya ingin menampilkan proyek-proyek yang telah saya kerjakan, kemampuan teknis, serta pengalaman saya dalam mengembangkan solusi digital. Saya juga terus belajar dan mengembangkan keterampilan untuk mengikuti perkembangan teknologi.</p>
+          </div>
+          <div class="cta">
+            <a class="btn main" href="#Portfolio">Lihat Projek →</a>
+            <a class="btn" href="#Contact">Hubungi Saya</a>
+          </div>
+          <div class="find">
+            <span>FIND ME</span>
+            <a href="https://github.com/ikhsan172" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                <path d="M9 18c-4.51 2-5-2-7-2"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/sanzz.unknown?obrf=d2J0ZmtjbnA4ZG50" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@ikhsan_unknown?_r=1&_t=ZS-9AvWgHEYVDq" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3D Interactive Lanyard & Badge (Hanging from Ceiling with 3D Flip) -->
+        <div class="lanyard" id="lanyardCard" aria-label="ID Card Ikhsan Saputra" title="Klik untuk membalik kartu (Click to flip)">
+          <div class="strap-wrapper">
+            <div class="strap">
+              <span>IKHSAN SAPUTRA • WEB DEV</span>
+            </div>
+            <div class="clip-assembly">
+              <div class="clip-clamp"></div>
+              <div class="clip-ring"></div>
+              <div class="clip-hook"></div>
+            </div>
+          </div>
+
+          <div class="badge-flipper" id="badgeFlipper">
+            <!-- Front Face -->
+            <div class="badge-face badge-front">
+              <div class="badge-hole"></div>
+              <div class="badge-head">
+                <span class="badge-tag">WEB</span>
+                <span class="badge-sub">DEVELOPER</span>
+              </div>
+              <div class="badge-photo">
+                <img src="assets/images/ikhsan.jpg" alt="Foto Ikhsan Saputra">
+                <div class="badge-photo-overlay"></div>
+              </div>
+              <div class="badge-info">
+                <h4>IKHSAN SAPUTRA</h4>
+                <p>TEKNIK INFORMATIKA • UNIKOM</p>
+              </div>
+              <div class="badge-foot">
+                <div class="badge-barcode"></div>
+                <span class="badge-brand">PORTFOLIO</span>
+              </div>
+              <div class="flip-hint">
+                <i data-lucide="rotate-cw"></i> Klik untuk balik
+              </div>
+            </div>
+
+            <!-- Back Face (QR & Sosmed) -->
+            <div class="badge-face badge-back">
+              <div class="badge-hole"></div>
+              <div class="badge-head back-head">
+                <span class="badge-tag">SCAN HERE</span>
+                <span class="badge-sub">IKHSAN.DEV</span>
+              </div>
+              <div class="qr-container">
+                <div class="qr-box">
+                  <img src="assets/images/qr-instagram-clean.png" alt="QR Code Instagram @sanzz.unknown" class="qr-code-img">
+                  <span class="qr-label">INSTAGRAM • @SANZZ.UNKNOWN</span>
+                </div>
+              </div>
+              <div class="badge-info back-info">
+                <h4>IKHSAN SAPUTRA</h4>
+                <p>Web Developer • Bandung</p>
+              </div>
+              <div class="back-tags">
+                <small>UNIKOM</small>
+                <small>Fullstack</small>
+                <small>Creative</small>
+              </div>
+              <div class="flip-hint">
+                <i data-lucide="rotate-cw"></i> Klik untuk balik
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="About">
+        <h2 class="title scroll-fx">About Me</h2>
+
+        <!-- 3-Column Hero Layout -->
+        <div class="about-hero scroll-fx">
+
+          <!-- LEFT: Intro + Button -->
+          <div class="about-left">
+            <h2 class="about-heading">
+              <span class="about-greeting">Hi, I'm</span>
+              <span class="about-name">Ikhsan<br>Saputra</span>
+            </h2>
+            <a href="#Contact" class="btn-hubungi">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>Hubungi Saya</span>
+            </a>
+          </div>
+
+          <!-- CENTER: Portrait Photo with Canvas Mask Brush Reveal -->
+          <div class="about-photo-col">
+            <div class="about-photo-wrap" id="aboutPhotoWrap" title="Usap foto untuk menyingkap foto alternatif">
+              <!-- Real photo (always visible base layer) -->
+              <img class="about-photo-real" id="aboutPhotoBase" src="assets/images/ikhsan-cutout.png" alt="Ikhsan Saputra" draggable="false">
+              <!-- Preloaded top hover photo -->
+              <img id="aboutPhotoHover" src="public/images/about-hover.png?v=2" alt="" style="display:none;" draggable="false">
+              <!-- Canvas Mask layer where the hover photo is revealed by cursor brush -->
+              <canvas class="about-photo-canvas" id="aboutMaskCanvas" aria-hidden="true"></canvas>
+              <!-- Hover hint -->
+              <div class="about-hover-hint" id="aboutHoverHint">
+                <span>Usap kursor di sini</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg>
+              </div>
+            </div>
+            <!-- Glow ring decoration -->
+            <div class="about-photo-ring" aria-hidden="true"></div>
+          </div>
+
+          <!-- RIGHT: Bio + Tech + Button -->
+          <div class="about-right">
+            <p class="about-bio">Saya adalah <strong>Web Developer</strong> yang berfokus pada pengembangan teknologi yang fungsional sekaligus menarik. Saya senang memadukan kode, desain, dan pengalaman interaktif untuk membangun produk digital yang berkesan.</p>
+            <p class="about-bio">Dengan <strong>Laravel</strong>, <strong>Vue</strong>, <strong>Next JS</strong>, dan <strong>Three.js</strong>, saya mengubah ide menjadi aplikasi web modern yang intuitif, responsif, dan berdampak.</p>
+            <a href="#Portfolio" class="btn-lihat">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>Lihat Proyek</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Education & Experience (Positioned First) -->
+        <div class="two scroll-fx">
+          <div class="edu-col">
+            <h3 class="two-heading">Education</h3>
+            <div class="item">
+              <div class="item-icon item-icon-logo">
+                <img src="assets/images/unikom-logo.png" alt="Logo Universitas Komputer Indonesia (UNIKOM)" class="edu-logo-img">
+              </div>
+              <div class="item-content">
+                <b>Universitas Komputer Indonesia</b>
+                <span>Teknik Informatika</span>
+                <span class="item-year">2022 – 2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-col">
+            <h3 class="two-heading">Experience</h3>
+            <div class="item">
+              <div class="item-icon item-icon-logo">
+                <img src="assets/images/disperkim-logo.png" alt="Logo Dinas Perumahan dan Pemukiman Provinsi Jawa Barat" class="edu-logo-img">
+              </div>
+              <div class="item-content">
+                <b>Dinas Perumahan dan Pemukiman Provinsi Jawa Barat</b>
+                <span>Web Developer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Row (Projects, Certificates) -->
+        <div class="stats scroll-fx">
+          <!-- Card 1: Projects -->
+          <div class="stat">
+            <div class="stat-top">
+              <div class="stat-badge" aria-hidden="true"><i data-lucide="code-2"></i></div>
+              <strong class="stat-num" data-count="4">4</strong>
+            </div>
+            <div class="stat-bottom">
+              <small class="stat-title">PROJECTS</small>
+              <span class="stat-sub">Karya yang dibuat</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Certificates -->
+          <div class="stat">
+            <div class="stat-top">
+              <div class="stat-badge" aria-hidden="true"><i data-lucide="award"></i></div>
+              <strong class="stat-num" data-count="3">3</strong>
+            </div>
+            <div class="stat-bottom">
+              <small class="stat-title">CERTIFICATES</small>
+              <span class="stat-sub">Skill yang divalidasi</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Spotify Music Widget -->
+        <div class="music scroll-fx">
+          <div class="music-info">
+            <h2>A little music.<span>A lot of ideas.</span></h2>
+            <p>Musik yang menemani proses saya mengubah ide menjadi sesuatu yang nyata. Intip playlist yang sedang sering saya putar.</p>
+            <a href="https://open.spotify.com/playlist/3040BLa6x5i9Ar2tZnFjQS?si=Hk2kQcZwR8KfAtSXES5aQg" target="_blank" rel="noopener noreferrer" class="music-btn">
+              <i data-lucide="music-2"></i>
+              <span>Daily Rotation di Spotify</span>
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+          <div class="spotify-wrapper">
+            <iframe src="https://open.spotify.com/embed/playlist/3040BLa6x5i9Ar2tZnFjQS?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section id="Portfolio">
+        <h2 class="title scroll-fx">Portfolio</h2>
+        <div class="tabs-wrapper scroll-fx">
+          <div class="tabs" role="tablist">
+            <button class="tab" role="tab" aria-selected="false" data-t="p">
+              <i data-lucide="code-2"></i>
+              <span>Projects</span>
+            </button>
+            <button class="tab" role="tab" aria-selected="false" data-t="c">
+              <i data-lucide="award"></i>
+              <span>Certificates</span>
+            </button>
+            <button class="tab" role="tab" aria-selected="true" data-t="s">
+              <i data-lucide="cpu"></i>
+              <span>Tech Stack</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid" id="p" hidden>
+          <article class="card card-demo scroll-fx" role="button" tabindex="0" data-demo="assets/demo/parkir/index.html" data-demo-live="" data-demo-title="Parkir Tertib" aria-label="Lihat website Parkir Tertib">
+            <div class="thumb thumb-img">
+              <img src="assets/images/project-parkir.jpg" alt="Tampilan dashboard Parkir Tertib" loading="lazy">
+              <span class="demo-hint"><i data-lucide="monitor-play"></i>Lihat Website</span>
+            </div>
+            <div class="in">
+              <h3>Penataan Parkir Liar - Parkir Tertib</h3>
+              <p>Website pendataan, pemetaan, dan penertiban parkir liar: peta persebaran titik, pengaduan masyarakat dengan nomor tiket, verifikasi petugas, penjadwalan penertiban, serta statistik dan laporan.</p>
+              <div class="tags"><small>Laravel</small><small>Leaflet</small><small>Tailwind</small></div>
+            </div>
+          </article>
+          <article class="card card-demo scroll-fx" role="button" tabindex="0" data-demo="assets/demo/disperkim/index.html" data-demo-live="" data-demo-title="Disperkim Jawa Barat" aria-label="Lihat website Aplikasi Dinas Perumahan dan Pemukiman Jabar">
+            <div class="thumb thumb-img">
+              <img src="assets/images/project-disperkim.jpg" alt="Tampilan website Disperkim Jawa Barat" loading="lazy">
+              <span class="demo-hint"><i data-lucide="monitor-play"></i>Lihat Website</span>
+            </div>
+            <div class="in">
+              <h3>Aplikasi Dinas Perumahan dan Pemukiman Jabar</h3>
+              <p>Aplikasi web untuk mendukung layanan publik Dinas Perumahan dan Permukiman Provinsi Jawa Barat: pengaduan online, permohonan dan pelacakan PPID, serta dashboard admin.</p>
+              <div class="tags"><small>Laravel</small><small>PHP</small><small>Pemerintah</small></div>
+            </div>
+          </article>
+          <article class="card card-demo scroll-fx" role="button" tabindex="0" data-demo="assets/demo/keuangan/login.html" data-demo-live="" data-demo-title="Sistem Manajemen Keuangan Perusahaan" aria-label="Lihat website Sistem Manajemen Keuangan Perusahaan">
+            <div class="thumb thumb-img">
+              <img src="assets/images/project-keuangan.jpg" alt="Tampilan dashboard Sistem Manajemen Keuangan Perusahaan" loading="lazy">
+              <span class="demo-hint"><i data-lucide="monitor-play"></i>Lihat Website</span>
+            </div>
+            <div class="in">
+              <h3>Sistem Manajemen Keuangan Perusahaan</h3>
+              <p>Website pencatatan pemasukan dan pengeluaran dengan kategori transaksi, laporan bulanan, grafik keuangan, export PDF dan Excel, serta role Admin dan Staff.</p>
+              <div class="tags"><small>Laravel</small><small>Chart.js</small><small>Tailwind</small></div>
+            </div>
+          </article>
+          <article class="card card-demo scroll-fx" role="button" tabindex="0" data-demo="assets/demo/stok/login.html" data-demo-live="" data-demo-title="Sistem Stok Barang" aria-label="Lihat website Sistem Stok Barang">
+            <div class="thumb thumb-img">
+              <img src="assets/images/project-stok.jpg" alt="Tampilan dashboard Sistem Stok Barang" loading="lazy">
+              <span class="demo-hint"><i data-lucide="monitor-play"></i>Lihat Website</span>
+            </div>
+            <div class="in">
+              <h3>Sistem Stok Barang</h3>
+              <p>Website pengelolaan stok barang kantor: data barang dan kategori, barang masuk/keluar, notifikasi stok minimum, riwayat transaksi, laporan PDF dan Excel, serta role Admin dan Staff.</p>
+              <div class="tags"><small>Laravel</small><small>MySQL</small><small>Chart.js</small></div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Certificates Grid -->
+        <div class="grid" id="c" hidden>
+          <article class="card scroll-fx">
+            <div class="thumb thumb-img">
+              <img src="assets/images/cert-bnsp.jpg" alt="Sertifikat Kompetensi BNSP Web Developer (CWDev) - Ikhsan Saputra" loading="lazy">
+              <a href="assets/images/cert-bnsp.jpg" target="_blank" rel="noopener noreferrer" class="thumb-preview-btn" title="Buka Sertifikat Resolusi Penuh">
+                <i data-lucide="external-link"></i>
+              </a>
+            </div>
+            <div class="in">
+              <h3>Sertifikasi BNSP - Web Developer (CWDev)</h3>
+              <p>Sertifikat Kompetensi bidang Pengembangan Perangkat Lunak dan Pemrograman dari LSP Informatika, berlaku 3 tahun.</p>
+              <div class="tags"><small>BNSP</small><small>LSP Informatika</small><small>2026</small></div>
+            </div>
+          </article>
+          <article class="card scroll-fx">
+            <div class="thumb thumb-img">
+              <img src="assets/images/cert-jaist.jpg" alt="Sertifikat The JAIST Partner University Master Connection Program - Ikhsan Saputra" loading="lazy">
+              <a href="assets/images/cert-jaist.jpg" target="_blank" rel="noopener noreferrer" class="thumb-preview-btn" title="Buka Sertifikat Resolusi Penuh">
+                <i data-lucide="external-link"></i>
+              </a>
+            </div>
+            <div class="in">
+              <h3>The JAIST Partner University Master Connection Program</h3>
+              <p>Sertifikat seminar akademik kolaboratif internasional sosialisasi JUMP oleh FTIK UNIKOM dan JAIST Jepang.</p>
+              <div class="tags"><small>JAIST Jepang</small><small>UNIKOM</small><small>2025</small></div>
+            </div>
+          </article>
+          <article class="card scroll-fx">
+            <div class="thumb thumb-img">
+              <img src="assets/images/cert-toefl.jpg" alt="Sertifikat English Proficiency Test (TOEFL) - UNIKOM Language Center" loading="lazy">
+              <a href="assets/images/cert-toefl.jpg" target="_blank" rel="noopener noreferrer" class="thumb-preview-btn" title="Buka Sertifikat Resolusi Penuh">
+                <i data-lucide="external-link"></i>
+              </a>
+            </div>
+            <div class="in">
+              <h3>English Proficiency Test (TOEFL)</h3>
+              <p>Sertifikat kemampuan bahasa Inggris dari UNIKOM Language Center dengan perolehan skor total 400.</p>
+              <div class="tags"><small>UNIKOM</small><small>Language Center</small><small>Skor 400</small></div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Tech Stack Grid -->
+        <div class="tech-grid scroll-fx" id="s">
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/react.svg" alt="React" loading="lazy"></div>
+            <span class="tech-name">React</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/javascript.svg" alt="JavaScript" loading="lazy"></div>
+            <span class="tech-name">JavaScript</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/html5.svg" alt="HTML5" loading="lazy"></div>
+            <span class="tech-name">HTML5</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/css3.svg" alt="CSS3" loading="lazy"></div>
+            <span class="tech-name">CSS3</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/fontawesome.svg" alt="Font Awesome" loading="lazy"></div>
+            <span class="tech-name">Font Awesome</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/python.svg" alt="Python" loading="lazy"></div>
+            <span class="tech-name">Python</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/php.svg" alt="PHP" loading="lazy"></div>
+            <span class="tech-name">PHP</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/mysql.svg" alt="MySQL" loading="lazy"></div>
+            <span class="tech-name">MySQL</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/supabase.svg" alt="Supabase" loading="lazy"></div>
+            <span class="tech-name">Supabase</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/firebase.svg" alt="Firebase" loading="lazy"></div>
+            <span class="tech-name">Firebase</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/xampp.svg" alt="XAMPP" loading="lazy"></div>
+            <span class="tech-name">XAMPP</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/git.svg" alt="Git" loading="lazy"></div>
+            <span class="tech-name">Git</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/github.svg" alt="GitHub" loading="lazy"></div>
+            <span class="tech-name">GitHub</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/vite.svg" alt="Vite" loading="lazy"></div>
+            <span class="tech-name">Vite</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/vercel.svg" alt="Vercel" loading="lazy"></div>
+            <span class="tech-name">Vercel</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/laravel.svg" alt="Laravel" loading="lazy"></div>
+            <span class="tech-name">Laravel</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/figma.svg" alt="Figma" loading="lazy"></div>
+            <span class="tech-name">Figma</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon"><img src="assets/images/tech/laragon.svg" alt="Laragon" loading="lazy"></div>
+            <span class="tech-name">Laragon</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="Contact">
+        <h2 class="title scroll-fx">Hubungi saya</h2>
+        <div class="contact">
+          <div class="panel scroll-fx">
+            <h3>Hubungi</h3>
+            <p>Ada yang mau didiskusikan? Langsung kirim pesan aja ya.</p>
+            <form id="f" action="https://formsubmit.co/ikhsansaputra357@gmail.com" method="POST">
+              <!-- Hidden FormSubmit Configuration -->
+              <input type="hidden" name="_subject" value="Pesan Baru dari Portofolio Ikhsan">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+
+              <label for="n">Nama</label>
+              <input id="n" name="name" required placeholder="Nama Anda">
+              <label for="e">Email</label>
+              <input id="e" name="email" type="email" required placeholder="Email Anda">
+              <label for="m">Pesan</label>
+              <textarea id="m" name="message" required placeholder="Pesan Anda"></textarea>
+              <button class="btn main" type="submit">Kirim Pesan</button>
+              <div id="formStatus" class="form-status" style="display:none;" aria-live="polite"></div>
+            </form>
+          </div>
+          <div class="panel scroll-fx">
+            <h4>FIND ME</h4>
+            <a class="link" href="https://github.com/ikhsan172" target="_blank" rel="noopener noreferrer">
+              <i>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                  <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+              </i>
+              <div><b>GitHub</b><span>@ikhsan172</span></div>
+            </a>
+            <a class="link" href="https://www.instagram.com/sanzz.unknown?obrf=d2J0ZmtjbnA4ZG50" target="_blank" rel="noopener noreferrer">
+              <i>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+              </i>
+              <div><b>Instagram</b><span>@sanzz.unknown</span></div>
+            </a>
+            <a class="link" href="https://www.tiktok.com/@ikhsan_unknown?_r=1&_t=ZS-9AvWgHEYVDq" target="_blank" rel="noopener noreferrer">
+              <i>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                </svg>
+              </i>
+              <div><b>TikTok</b><span>@ikhsan_unknown</span></div>
+            </a>
+            <a class="link" href="mailto:ikhsansaputra357@gmail.com">
+              <i><i data-lucide="mail"></i></i>
+              <div><b>Email</b><span>ikhsansaputra357@gmail.com</span></div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="scroll-fx footer-scroll-fx">
+      <div>
+        <b>Ikhsan.dev</b>
+        <p>Membangun aplikasi web dan mobile dengan teknologi yang terus berkembang.</p>
+      </div>
+      <div>
+        <h4>NAVIGASI</h4>
+        <a href="#Home">Home</a>
+        <a href="#About">Tentang Saya</a>
+        <a href="#Portfolio">Portofolio</a>
+        <a href="#Contact">Kontak</a>
+      </div>
+      <div>
+        <h4>TERHUBUNG</h4>
+        <a href="https://github.com/ikhsan172" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.instagram.com/sanzz.unknown?obrf=d2J0ZmtjbnA4ZG50" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@ikhsan_unknown?_r=1&_t=ZS-9AvWgHEYVDq" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="mailto:ikhsansaputra357@gmail.com">Email</a>
+      </div>
+      <div class="copy">© 2026 Ikhsan Saputra. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <!-- Website Preview Modal -->
+  <div class="demo-modal" id="demoModal" hidden role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
+    <div class="demo-backdrop" data-demo-close></div>
+    <div class="demo-window">
+      <div class="demo-bar">
+        <span class="demo-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <strong id="demoModalTitle" class="demo-title">Preview Website</strong>
+        <a id="demoOpenNew" class="demo-open" href="#" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="external-link"></i><span>Buka di tab baru</span>
+        </a>
+        <button type="button" class="demo-close" data-demo-close aria-label="Tutup preview"><i data-lucide="x"></i></button>
+      </div>
+      <iframe id="demoFrame" class="demo-frame" title="Preview website" loading="lazy"></iframe>
+    </div>
+  </div>
+</body>
+</html>
+

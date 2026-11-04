@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DISPERKIM Jabar</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            background-color: #F3F4F6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h1 {
+            color: var(--primary);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 0.75rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
+        }
+
+        .btn-block {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        .error-msg {
+            color: #EF4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-card">
+        <div class="login-header">
+            <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"><i
+                    class="fa-solid fa-building-columns"></i></div>
+            <h1>DISPERKIM</h1>
+            <p style="color: #6B7280;">Silakan login untuk melanjutkan</p>
+        </div>
+
+        <form action="login.html" method="POST">
+            <input type="hidden" name="_token" value="ZrDDdG7TuHVRZQt4FBV8ybVf7W8gUWijjjG5lWeh" autocomplete="off">            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" name="email" id="email" class="form-input" required autofocus
+                    placeholder="name@example.com">
+                            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password" class="form-input" required placeholder="********">
+                            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" style="border: none;">Sign In</button>
+        </form>
+
+        <div style="margin-top: 1.5rem; text-align: center; font-size: 0.875rem;">
+            <p style="color: #6B7280;">Belum punya akun? <a href="login.html"
+                    style="color: var(--primary); font-weight: 600; text-decoration: none;">Sign Up</a></p>
+        </div>
+
+        <div style="margin-top: 2rem; text-align: center; font-size: 0.875rem; color: #6B7280;">
+            <p>Admin: admin@disperkim.com | pass: password</p>
+            <p>User: user@gmail.com | pass: password</p>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>.demo-badge{position:fixed;right:12px;bottom:12px;z-index:99999;background:rgba(15,23,42,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none;letter-spacing:.2px}</style>
+<div class="demo-badge">Mode demo &middot; formulir tidak mengirim data</div>
+<script>document.addEventListener('submit',function(e){e.preventDefault();alert('Ini versi demo statis. Formulir tidak mengirim data.');},true);</script>
+</body>
+
+</html>

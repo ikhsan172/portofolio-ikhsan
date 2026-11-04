@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="demo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+<title>Masuk · Stok Barang</title>
+</head>
+<body class="flex min-h-screen items-center justify-center bg-[#f6f7f9] px-4 font-sans text-ink antialiased">
+<div class="w-full max-w-md">
+    <div class="mb-8 flex items-center justify-center gap-3">
+        <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-500 text-white"><svg class="h-5 w-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg>
+</span>
+        <span class="text-2xl font-semibold tracking-tight">Stok Barang</span>
+    </div>
+
+    <form method="POST" action="index.html" data-nav="index.html" class="card space-y-5 p-8">
+        <input type="hidden" name="_token" value="demo" autocomplete="off">        <div>
+            <h1 class="text-xl font-semibold">Masuk ke akun Anda</h1>
+            <p class="mt-1 text-sm text-slate-500">Kelola stok barang kantor dengan mudah.</p>
+        </div>
+        <div>
+            <label class="label" for="email">Email</label>
+            <input id="email" name="email" type="email" value="admin@kantor.test" class="input" required autofocus>
+                    </div>
+        <div>
+            <label class="label" for="password">Kata sandi</label>
+            <input id="password" name="password" type="password" value="password" class="input" required>
+        </div>
+        <label class="flex items-center gap-2 text-sm text-slate-600">
+            <input type="checkbox" name="remember" class="rounded border-slate-300 text-brand-600 focus:ring-brand-500"> Ingat saya
+        </label>
+        <button class="btn-primary w-full">Masuk</button>
+    </form>
+</div>
+<style>.demo-badge{position:fixed;right:12px;bottom:12px;z-index:99999;background:rgba(15,23,42,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none}</style>
+<div class="demo-badge">Mode demo &middot; data contoh</div>
+<script>
+document.addEventListener('submit',function(e){
+  e.preventDefault();
+  var nav=e.target.getAttribute('data-nav');
+  if(nav){location.href=nav;return;}
+  alert('Ini versi demo statis. Perubahan data tidak disimpan.');
+},true);
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href="#demo-off"]');
+  if(a){e.preventDefault();alert('Fitur ini dinonaktifkan pada versi demo statis.');}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Laragon official: green gradient shield with dragon silhouette -->
+  <!-- Background shield shape -->
+  <defs>
+    <linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6BCB3D"/>
+      <stop offset="100%" stop-color="#2E8B1A"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7ED321"/>
+      <stop offset="100%" stop-color="#417505"/>
+    </linearGradient>
+  </defs>
+  <!-- Dragon head + body (Laragon mascot) -->
+  <!-- Snout -->
+  <ellipse cx="100" cy="72" rx="22" ry="14" fill="#5CAF00"/>
+  <!-- Head -->
+  <ellipse cx="100" cy="58" rx="30" ry="28" fill="#6BC82B"/>
+  <!-- Eyes -->
+  <circle cx="87" cy="50" r="7" fill="white"/>
+  <circle cx="113" cy="50" r="7" fill="white"/>
+  <circle cx="89" cy="51" r="4" fill="#1a3a00"/>
+  <circle cx="115" cy="51" r="4" fill="#1a3a00"/>
+  <circle cx="90.5" cy="49.5" r="1.5" fill="white"/>
+  <circle cx="116.5" cy="49.5" r="1.5" fill="white"/>
+  <!-- Nostrils -->
+  <ellipse cx="93" cy="70" rx="3" ry="2" fill="#3E7A00"/>
+  <ellipse cx="107" cy="70" rx="3" ry="2" fill="#3E7A00"/>
+  <!-- Horns -->
+  <path d="M80 36 Q72 18 78 12 Q83 22 84 32Z" fill="#4CAF50"/>
+  <path d="M120 36 Q128 18 122 12 Q117 22 116 32Z" fill="#4CAF50"/>
+  <!-- Ears / frills -->
+  <path d="M74 45 Q58 38 55 50 Q60 57 72 52Z" fill="#5BBD28"/>
+  <path d="M126 45 Q142 38 145 50 Q140 57 128 52Z" fill="#5BBD28"/>
+  <!-- Body -->
+  <ellipse cx="100" cy="128" rx="36" ry="42" fill="#6BC82B"/>
+  <!-- Belly -->
+  <ellipse cx="100" cy="132" rx="22" ry="30" fill="#A8E063" opacity="0.65"/>
+  <!-- Left wing -->
+  <path d="M65 105 Q28 82 22 112 Q28 128 56 120Z" fill="#4CAF50" opacity="0.9"/>
+  <path d="M65 105 Q35 95 30 108 Q40 118 56 113Z" fill="#78C93B"/>
+  <!-- Right wing -->
+  <path d="M135 105 Q172 82 178 112 Q172 128 144 120Z" fill="#4CAF50" opacity="0.9"/>
+  <path d="M135 105 Q165 95 170 108 Q160 118 144 113Z" fill="#78C93B"/>
+  <!-- Arms -->
+  <path d="M68 120 Q50 130 45 148 Q52 155 65 145 Q70 135 72 128Z" fill="#5ABF20"/>
+  <path d="M132 120 Q150 130 155 148 Q148 155 135 145 Q130 135 128 128Z" fill="#5ABF20"/>
+  <!-- Legs -->
+  <path d="M82 162 Q74 176 72 188 Q80 192 88 182 Q90 172 90 164Z" fill="#5ABF20"/>
+  <path d="M118 162 Q126 176 128 188 Q120 192 112 182 Q110 172 110 164Z" fill="#5ABF20"/>
+  <!-- Tail -->
+  <path d="M100 168 Q115 178 120 192 Q110 198 104 188 Q100 195 92 196 Q86 188 95 182 Q92 190 100 168Z" fill="#4CAF50"/>
+  <!-- Smile / mouth -->
+  <path d="M87 75 Q100 84 113 75" fill="none" stroke="#3E7A00" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

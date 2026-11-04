@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPID - Disperkim Jawa Barat</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .ppid-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .ppid-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .ppid-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation (Copied for consistency) -->
+    <nav class="navbar" style="background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo_disperkim.png" alt="Disperkim Jabar Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#beranda">Beranda</a>
+                <a href="index.html#profil">Profil</a>
+                <a href="index.html#layanan">Layanan</a>
+                <div class="dropdown">
+                    <a href="#" style="display: flex; align-items: center; gap: 0.25rem;">PPID</a>
+                    <div class="dropdown-content">
+                        <a href="ppid-ajukan.html">Ajukan Permohonan</a>
+                        <a href="ppid-lacak.html">Lacak Permohonan</a>
+                    </div>
+                </div>
+                                    <a href="login.html" class="btn btn-primary">Login</a>
+                            </div>
+        </div>
+    </nav>
+
+    <header class="ppid-header">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Pejabat Pengelola Informasi dan Dokumentasi</h1>
+            <p style="font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">Layanan informasi publik Dinas
+                Perumahan dan Permukiman Provinsi Jawa Barat. Transparan, Akuntabel, dan Melayani.</p>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 4rem 0;">
+        
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+            <div class="ppid-card" style="text-align: center;">
+                <div
+                    style="width: 80px; height: 80px; background: #e0f2fe; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                </div>
+                <h3>Ajukan Permohonan</h3>
+                <p style="color: #6b7280; margin-bottom: 1.5rem;">Ajukan permohonan informasi publik secara online
+                    dengan mudah dan cepat.</p>
+                <a href="ppid-ajukan.html" class="btn btn-primary">Buat Permohonan</a>
+            </div>
+
+            <div class="ppid-card" style="text-align: center;">
+                <div
+                    style="width: 80px; height: 80px; background: #fef3c7; color: #d97706; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h3>Cek Status</h3>
+                <p style="color: #6b7280; margin-bottom: 1.5rem;">Pantau status permohonan informasi Anda menggunakan
+                    Kode Tiket.</p>
+                <form action="ppid-lacak.html" method="GET"
+                    style="display: flex; gap: 0.5rem; justify-content: center;">
+                    <input type="text" name="kode_permohonan" placeholder="Masukkan Kode (e.g. PPID-XXXX)"
+                        style="padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.5rem; width: 220px;">
+                    <button type="submit" class="btn btn-secondary">Cek</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2>Tentang PPID</h2>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow);">
+            <p style="margin-bottom: 1rem; line-height: 1.7;">
+                Berdasarkan <strong>Undang-Undang Nomor 14 Tahun 2008 tentang Keterbukaan Informasi Publik</strong>,
+                Dinas Perumahan dan Permukiman Provinsi Jawa Barat sebagai Badan Publik berkewajiban untuk menyediakan
+                dan melayani permohonan informasi publik secara cepat, tepat waktu, biaya ringan/proporsional, dan cara
+                sederhana.
+            </p>
+            <p style="line-height: 1.7;">
+                PPID Disperkim Jabar berkomitmen untuk memberikan pelayanan informasi prima kepada masyarakat guna
+                mewujudkan tata kelola pemerintahan yang baik (good governance).
+            </p>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#" class="footer-logo">DISPERKIM JABAR</a>
+                    <p style="opacity: 0.8; line-height: 1.8;">
+                        Dinas Perumahan dan Permukiman<br>
+                        Pemerintah Daerah Provinsi Jawa Barat
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="ppid.html">PPID</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Dinas Perumahan dan Permukiman Provinsi Jawa Barat.
+            </div>
+        </div>
+    </footer>
+
+<style>.demo-badge{position:fixed;right:12px;bottom:12px;z-index:99999;background:rgba(15,23,42,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none;letter-spacing:.2px}</style>
+<div class="demo-badge">Mode demo &middot; formulir tidak mengirim data</div>
+<script>document.addEventListener('submit',function(e){e.preventDefault();alert('Ini versi demo statis. Formulir tidak mengirim data.');},true);</script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+<script src="assets/js/demo.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Masuk · Parkir Tertib</title>
+    <link rel="stylesheet" href="assets/css/app.css" /><script defer src="assets/js/app.js"></script></head>
+<body class="min-h-full font-sans">
+<div class="grid min-h-screen lg:grid-cols-2">
+    <div class="hidden flex-col justify-between bg-navy-900 p-12 text-white lg:flex">
+        <div class="flex items-center gap-2 text-xl font-bold">
+            <span class="grid size-10 place-items-center rounded-lg bg-primary-600"><i data-lucide="car" class="size-5 shrink-0 size-6" aria-hidden="true"></i>
+</span>
+            Parkir Tertib
+        </div>
+        <div>
+            <h1 class="text-3xl font-bold leading-tight">Sistem informasi pendataan, pemetaan, dan penertiban parkir liar.</h1>
+            <p class="mt-4 max-w-md text-navy-200">Kelola titik parkir liar, verifikasi laporan masyarakat, dan pantau penertiban di lapangan dalam satu tempat.</p>
+        </div>
+        <p class="text-xs text-navy-300">Akses internal untuk petugas dan pimpinan.</p>
+    </div>
+
+    <div class="flex items-center justify-center p-6">
+        <div class="w-full max-w-sm">
+            <h2 class="text-2xl font-bold text-navy-900">Masuk</h2>
+            <p class="mt-1 text-sm text-slate-500">Gunakan akun yang diberikan administrator.</p>
+
+            <form method="POST" action="dashboard.html" data-nav="dashboard.html" class="mt-6 space-y-4">
+                <input type="hidden" name="_token" value="demo" autocomplete="off">                                <div>
+                    <label for="email" class="label">Email</label>
+                    <input id="email" name="email" type="email" value="superadmin@parkirtertib.test" class="input" required autofocus autocomplete="username">
+                </div>
+                <div>
+                    <label for="password" class="label">Kata sandi</label>
+                    <input id="password" name="password" type="password" class="input" required autocomplete="current-password" value="password">
+                </div>
+                <label class="flex items-center gap-2 text-sm text-slate-600">
+                    <input type="checkbox" name="remember" class="rounded border-slate-300 text-primary-600 focus:ring-primary-500"> Ingat saya
+                </label>
+                <button type="submit" class="btn btn-primary w-full">Masuk</button>
+            </form>
+
+            <p class="mt-6 text-center text-sm text-slate-500">
+                Warga? <a href="report-parking.html" class="font-medium text-primary-700 hover:underline">Laporkan parkir liar</a>
+                &middot; <a href="track-report.html" class="font-medium text-primary-700 hover:underline">Lacak laporan</a>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

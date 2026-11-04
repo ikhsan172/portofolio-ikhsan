@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="demo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+<title>Transaksi · Keuangan Perusahaan</title>
+    </head>
+<body class="bg-[#f6f7f9] font-sans text-ink antialiased">
+
+<header class="sticky top-0 z-30 flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3 lg:hidden">
+    <span class="text-lg font-semibold">Keuangan Perusahaan</span>
+    <button type="button" id="menuBtn" class="rounded-lg p-2 hover:bg-slate-100" aria-label="Buka menu"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+</button>
+</header>
+
+<aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-72 -translate-x-full flex-col border-r border-slate-200 bg-white transition-transform lg:translate-x-0">
+    <div class="flex items-center gap-3 px-7 pb-6 pt-8">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500 text-xl font-bold text-white">K</span>
+        <span class="text-xl font-semibold tracking-tight">Keuangan Perusahaan</span>
+    </div>
+
+    <nav class="flex-1 space-y-1 overflow-y-auto px-4">
+        <a href="index.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+    <span class="flex-1">Dashboard</span>
+</a>
+        <a href="transaksi-pemasukan.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
+    <span class="flex-1">Pemasukan</span>
+</a>
+        <a href="transaksi-pengeluaran.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181"/></svg>
+    <span class="flex-1">Pengeluaran</span>
+</a>
+        <a href="laporan.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+    <span class="flex-1">Laporan</span>
+</a>
+
+                    <div class="mx-2 my-4 border-t border-slate-200"></div>
+            <a href="kategori.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3zM6 6h.008v.008H6V6z"/></svg>
+    <span class="flex-1">Kategori</span>
+</a>
+            <a href="pengguna.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+    <span class="flex-1">Pengguna</span>
+</a>
+            </nav>
+
+    <div class="border-t border-slate-200 p-4">
+        <div class="flex items-center gap-3">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-100 font-semibold text-brand-800">A</span>
+            <div class="min-w-0 flex-1">
+                <p class="truncate text-sm font-semibold">Administrator</p>
+                <p class="truncate text-xs text-slate-500">Admin · admin@perusahaan.test</p>
+            </div>
+            <form method="POST" action="login.html" data-nav="login.html">
+                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off">                <button class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-ink" title="Keluar" aria-label="Keluar"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/></svg>
+</button>
+            </form>
+        </div>
+    </div>
+</aside>
+<div id="backdrop" class="fixed inset-0 z-30 hidden bg-black/30 lg:hidden"></div>
+
+<main class="lg:pl-72">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-8 sm:py-8">
+                
+        <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+    <div>
+        <h1 class="text-2xl font-semibold">Semua transaksi</h1>
+        <p class="text-sm text-slate-500">Total sesuai filter: <span class="font-semibold text-ink">Rp 3.379.000.000</span></p>
+    </div>
+    <a href="baru-pengeluaran.html" class="btn-primary"><svg class="h-5 w-5 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+ Tambah pengeluaran</a>
+</div>
+
+<form method="GET" class="card mb-4 grid gap-3 p-4 sm:grid-cols-2 lg:grid-cols-5">
+    <input type="hidden" name="type" value="">
+    <input type="search" name="search" value="" placeholder="Cari deskripsi / no. referensi" class="input lg:col-span-2" aria-label="Cari">
+    <select name="category_id" class="input" aria-label="Kategori">
+        <option value="">Semua kategori</option>
+                    <option value="5" >Gaji Karyawan</option>
+                    <option value="2" >Jasa &amp; Konsultasi</option>
+                    <option value="7" >Listrik &amp; Internet</option>
+                    <option value="8" >Operasional</option>
+                    <option value="12" >Pajak</option>
+                    <option value="10" >Pemasaran</option>
+                    <option value="3" >Pendapatan Bunga</option>
+                    <option value="4" >Pendapatan Lain-lain</option>
+                    <option value="1" >Penjualan Produk</option>
+                    <option value="11" >Perlengkapan Kantor</option>
+                    <option value="6" >Sewa Kantor</option>
+                    <option value="9" >Transportasi</option>
+            </select>
+    <input type="month" name="month" value="" class="input" aria-label="Bulan">
+    <div class="flex gap-2">
+        <button class="btn-primary flex-1">Terapkan</button>
+        <a href="transaksi.html" class="btn-light">Reset</a>
+    </div>
+</form>
+
+<div class="card overflow-hidden p-0">
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-slate-100">
+            <thead class="bg-slate-50">
+                <tr>
+                    <th class="th">Tanggal</th><th class="th">Kategori</th><th class="th">Deskripsi</th>
+                    <th class="th">Dicatat oleh</th><th class="th text-right">Jumlah</th><th class="th"><span class="sr-only">Aksi</span></th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Transportasi</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-5667</span></td>
+                    <td class="td whitespace-nowrap">Administrator</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 20.500.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Listrik &amp; Internet</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-2426</span></td>
+                    <td class="td whitespace-nowrap">Staff Keuangan</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 13.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Pemasaran</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-4093</span></td>
+                    <td class="td whitespace-nowrap">Administrator</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 40.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Listrik &amp; Internet</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-8771</span></td>
+                    <td class="td whitespace-nowrap">Staff Keuangan</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 6.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Listrik &amp; Internet</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-2912</span></td>
+                    <td class="td whitespace-nowrap">Staff Keuangan</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 14.500.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Perlengkapan Kantor</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-7057</span></td>
+                    <td class="td whitespace-nowrap">Staff Keuangan</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 7.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Operasional</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-4854</span></td>
+                    <td class="td whitespace-nowrap">Staff Keuangan</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 19.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Operasional</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-1241</span></td>
+                    <td class="td whitespace-nowrap">Staff Keuangan</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 22.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Transportasi</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-9561</span></td>
+                    <td class="td whitespace-nowrap">Administrator</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 3.500.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Pajak</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-7583</span></td>
+                    <td class="td whitespace-nowrap">Administrator</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 6.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Operasional</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-2997</span></td>
+                    <td class="td whitespace-nowrap">Administrator</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 34.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Operasional</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-1097</span></td>
+                    <td class="td whitespace-nowrap">Staff Keuangan</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 31.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Sewa Kantor</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-6349</span></td>
+                    <td class="td whitespace-nowrap">Staff Keuangan</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 32.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600">Pajak</span>
+                    </td>
+                    <td class="td">Pengeluaran contoh<span class="block text-xs text-slate-400">EXP-6623</span></td>
+                    <td class="td whitespace-nowrap">Administrator</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-red-500">− Rp 13.500.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                                            <tr>
+                    <td class="td whitespace-nowrap">01 Nov 2026</td>
+                    <td class="td whitespace-nowrap">
+                        <span class="rounded-full px-2.5 py-1 text-xs font-medium bg-brand-50 text-brand-700">Pendapatan Lain-lain</span>
+                    </td>
+                    <td class="td">Pemasukan contoh<span class="block text-xs text-slate-400">INV-1665</span></td>
+                    <td class="td whitespace-nowrap">Administrator</td>
+                    <td class="td whitespace-nowrap text-right font-semibold text-emerald-600">+ Rp 35.000.000</td>
+                    <td class="td whitespace-nowrap text-right">
+                                                    <a href="#demo-off" class="font-medium text-brand-700 hover:underline">Ubah</a>
+                            <form method="POST" action="#" class="ml-3 inline" onsubmit="return confirm('Hapus transaksi ini?')">
+                                <input type="hidden" name="_token" value="OwYLZUTp1gxdyL3Ledld4aNO9ykwvigmnxdtnC3m" autocomplete="off"> <input type="hidden" name="_method" value="DELETE">                                <button class="font-medium text-red-600 hover:underline">Hapus</button>
+                            </form>
+                                            </td>
+                </tr>
+                        </tbody>
+        </table>
+    </div>
+</div>
+<div class="mt-4"><nav role="navigation" aria-label="Pagination Navigation">
+
+        <div class="flex gap-2 items-center justify-between sm:hidden">
+
+                            <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 cursor-not-allowed leading-5 rounded-md dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600">
+                    &laquo; Previous
+                </span>
+            
+                            <a href="#demo-off" rel="next" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-800 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-200">
+                    Next &raquo;
+                </a>
+            
+        </div>
+
+        <div class="hidden sm:flex-1 sm:flex sm:gap-2 sm:items-center sm:justify-between">
+
+            <div>
+                <p class="text-sm text-gray-700 leading-5 dark:text-gray-600">
+                    Showing
+                                            <span class="font-medium">1</span>
+                        to
+                        <span class="font-medium">15</span>
+                                        of
+                    <span class="font-medium">132</span>
+                    results
+                </p>
+            </div>
+
+            <div>
+                <span class="inline-flex rtl:flex-row-reverse shadow-sm rounded-md">
+
+                    
+                                            <span aria-disabled="true" aria-label="&amp;laquo; Previous">
+                            <span class="inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-not-allowed rounded-l-md leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400" aria-hidden="true">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </span>
+                    
+                    
+                                            
+                        
+                        
+                                                                                                                        <span aria-current="page">
+                                        <span class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 cursor-default leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">1</span>
+                                    </span>
+                                                                                                                                <a href="#demo-off" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 2">
+                                        2
+                                    </a>
+                                                                                                                                <a href="#demo-off" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 3">
+                                        3
+                                    </a>
+                                                                                                                                <a href="#demo-off" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 4">
+                                        4
+                                    </a>
+                                                                                                                                <a href="#demo-off" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 5">
+                                        5
+                                    </a>
+                                                                                                                                <a href="#demo-off" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 6">
+                                        6
+                                    </a>
+                                                                                                                                <a href="#demo-off" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 7">
+                                        7
+                                    </a>
+                                                                                                                                <a href="#demo-off" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 8">
+                                        8
+                                    </a>
+                                                                                                                                <a href="#demo-off" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 9">
+                                        9
+                                    </a>
+                                                                                                        
+                    
+                                            <a href="#demo-off" rel="next" class="inline-flex items-center px-2 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md leading-5 hover:text-gray-400 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:active:bg-gray-700 dark:focus:border-blue-800 dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-gray-300" aria-label="Next &amp;raquo;">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                                    </span>
+            </div>
+        </div>
+    </nav>
+</div>
+    </div>
+</main>
+
+<script>
+    const sb = document.getElementById('sidebar'), bd = document.getElementById('backdrop');
+    const toggle = () => { sb.classList.toggle('-translate-x-full'); bd.classList.toggle('hidden'); };
+    document.getElementById('menuBtn')?.addEventListener('click', toggle);
+    bd.addEventListener('click', toggle);
+</script>
+<style>.demo-badge{position:fixed;right:12px;bottom:12px;z-index:99999;background:rgba(15,23,42,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none}</style>
+<div class="demo-badge">Mode demo &middot; data contoh</div>
+<script>
+document.addEventListener('submit',function(e){
+  e.preventDefault();
+  var f=e.target,nav=f.getAttribute('data-nav');
+  if(nav){location.href=nav;return;}
+  alert('Ini versi demo statis. Perubahan data tidak disimpan.');
+},true);
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href="#demo-off"]');
+  if(a){e.preventDefault();alert('Fitur ini dinonaktifkan pada versi demo statis.');}
+});
+</script>
+</body>
+</html>

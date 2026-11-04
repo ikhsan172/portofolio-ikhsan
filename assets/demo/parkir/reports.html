@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+<script src="assets/js/demo.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="demo">
+    <meta name="robots" content="noindex">
+    <title>Laporan Parkir Liar · Parkir Tertib</title>
+    <link rel="stylesheet" href="assets/css/app.css" /><script defer src="assets/js/app.js"></script>    </head>
+<body class="min-h-full font-sans">
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-64 -translate-x-full flex-col bg-navy-900 text-navy-100 transition-transform lg:translate-x-0" aria-label="Menu utama">
+    <div class="flex h-16 items-center justify-between border-b border-navy-800 px-5">
+        <a href="dashboard.html" class="flex items-center gap-2 text-lg font-bold text-white">
+            <span class="grid size-9 place-items-center rounded-lg bg-primary-600"><i data-lucide="car" class="size-5 shrink-0 size-5" aria-hidden="true"></i>
+</span>
+            Parkir Tertib
+        </a>
+        <button type="button" data-sidebar-toggle class="rounded-lg p-1.5 hover:bg-navy-800 lg:hidden" aria-label="Tutup menu"><i data-lucide="x" class="size-5 shrink-0" aria-hidden="true"></i>
+</button>
+    </div>
+
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+                                                    <a href="dashboard.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="layout-dashboard" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Dashboard</span>
+                                    </a>
+                                                                <a href="parking-locations.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="map-pin" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Data Titik Parkir</span>
+                                    </a>
+                                                                <a href="map.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="map" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Peta Persebaran</span>
+                                    </a>
+                                                                <a href="reports.html"  aria-current="page"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition bg-primary-600 text-white">
+                    <i data-lucide="file-warning" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Laporan Parkir Liar</span>
+                    <span class="rounded-full bg-amber-500 px-2 py-0.5 text-xs font-semibold text-white">15</span>                </a>
+                                                                <a href="enforcement-tasks.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="siren" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Penertiban</span>
+                                    </a>
+                                                                <a href="areas.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="building-2" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Data Wilayah</span>
+                                    </a>
+                                                                <a href="violation-categories.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="tags" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Kategori Pelanggaran</span>
+                                    </a>
+                                                                <a href="analytics.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="chart-column" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Laporan dan Statistik</span>
+                                    </a>
+                                                                <a href="users.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="users" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Manajemen Pengguna</span>
+                                    </a>
+                                                                <a href="settings.html"                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition text-navy-200 hover:bg-navy-800 hover:text-white">
+                    <i data-lucide="settings" class="size-5 shrink-0" aria-hidden="true"></i>
+                    <span class="flex-1">Pengaturan</span>
+                                    </a>
+                        </nav>
+
+    <div class="border-t border-navy-800 p-4 text-xs text-navy-300">
+        <p class="font-semibold text-white">Super Admin</p>
+        <p>Super Admin</p>
+    </div>
+</aside>
+    <div id="sidebar-overlay" data-sidebar-toggle class="fixed inset-0 z-30 hidden bg-navy-950/50 lg:hidden"></div>
+
+    <div class="flex min-h-screen min-w-0 flex-col lg:pl-64">
+        <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-3 border-b border-slate-200 bg-white px-4 sm:px-6">
+    <div class="flex items-center gap-3">
+        <button type="button" data-sidebar-toggle class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden" aria-label="Buka menu"><i data-lucide="menu" class="size-5 shrink-0" aria-hidden="true"></i>
+</button>
+        <p class="hidden text-sm text-slate-500 sm:block">Senin, 02 November 2026</p>
+    </div>
+    <div class="flex items-center gap-3">
+        <a href="settings.html" class="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-slate-100">
+            <span class="grid size-8 place-items-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700">S</span>
+            <span class="hidden text-left leading-tight sm:block">
+                <span class="block text-sm font-semibold text-slate-800">Super Admin</span>
+                <span class="block text-xs text-slate-500">Super Admin</span>
+            </span>
+        </a>
+        <form method="POST" action="login.html" data-nav="login.html">
+            <input type="hidden" name="_token" value="demo" autocomplete="off">            <button type="submit" class="btn btn-secondary btn-sm" title="Keluar"><i data-lucide="log-out" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+<span class="hidden sm:inline">Keluar</span></button>
+        </form>
+    </div>
+</header>
+        <main class="flex-1 p-4 sm:p-6 lg:p-8">
+                        <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div class="min-w-0">
+                    <nav aria-label="Breadcrumb" class="mb-1 flex flex-wrap items-center gap-1 text-xs text-slate-500">
+                                                                                <a href="dashboard.html" class="hover:text-primary-700">Dashboard</a>
+                                                        <i data-lucide="chevron-right" class="size-5 shrink-0 size-3" aria-hidden="true"></i>
+                                            <span class="font-medium text-slate-700">Laporan Parkir Liar</span>
+                                                </nav>
+                <h1 class="text-2xl font-bold tracking-tight text-navy-900">Laporan Parkir Liar</h1>
+            </div>
+    <div class="flex flex-wrap items-center gap-2"><a href="reports_create.html" class="btn btn-primary"><i data-lucide="plus" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Laporan lapangan</a></div></div>
+
+<form method="GET" class="card mb-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+    <input type="search" name="q" value="" placeholder="Cari tiket, alamat, deskripsi" class="input lg:col-span-2" aria-label="Cari">
+    <select name="source" class="input" aria-label="Sumber">
+        <option value="">Semua sumber</option>
+        <option value="public" >Masyarakat</option><option value="officer" >Petugas</option>    </select>
+    <select name="status" class="input" aria-label="Status">
+        <option value="">Semua status</option>
+        <option value="pending" >Menunggu verifikasi</option><option value="verified" >Terverifikasi</option><option value="processing" >Sedang diproses</option><option value="completed" >Selesai</option><option value="rejected" >Ditolak</option>    </select>
+    <select name="district_id" class="input" aria-label="Kecamatan">
+        <option value="">Semua kecamatan</option>
+        <option value="3" >Andir</option><option value="4" >Antapani</option><option value="5" >Arcamanik</option><option value="6" >Astanaanyar</option><option value="7" >Babakan Ciparay</option><option value="8" >Bandung Kidul</option><option value="9" >Bandung Kulon</option><option value="10" >Bandung Wetan</option><option value="11" >Batununggal</option><option value="12" >Bojongloa Kaler</option><option value="13" >Bojongloa Kidul</option><option value="14" >Buahbatu</option><option value="15" >Cibeunying Kaler</option><option value="16" >Cibeunying Kidul</option><option value="17" >Cibiru</option><option value="18" >Cicendo</option><option value="19" >Cidadap</option><option value="20" >Cinambo</option><option value="21" >Coblong</option><option value="22" >Gedebage</option><option value="23" >Kiaracondong</option><option value="24" >Lengkong</option><option value="25" >Mandalajati</option><option value="26" >Panyileukan</option><option value="27" >Rancasari</option><option value="28" >Regol</option><option value="29" >Sukajadi</option><option value="30" >Sukasari</option><option value="31" >Sumur Bandung</option><option value="32" >Ujungberung</option>    </select>
+    <div class="flex gap-2 sm:col-span-2 lg:col-span-5">
+        <button class="btn btn-primary"><i data-lucide="search" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Terapkan</button>
+        <a href="reports.html" class="btn btn-secondary"><i data-lucide="rotate-ccw" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Reset</a>
+    </div>
+</form>
+
+<div class="card overflow-hidden p-0">
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-slate-200">
+            <thead class="bg-slate-50"><tr>
+                <th class="th">Tiket</th><th class="th">Tanggal</th><th class="th">Sumber</th><th class="th">Lokasi</th><th class="th">Kategori</th><th class="th">Status</th><th class="th"><span class="sr-only">Aksi</span></th>
+            </tr></thead>
+            <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_14.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00014</a></td>
+                    <td class="td whitespace-nowrap">11 Okt 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 8</span><span class="text-xs text-slate-500">Arcamanik</span></td>
+                    <td class="td">Parkir di badan jalan</td>
+                    <td class="td"><span class="badge bg-green-100 text-green-700">Selesai</span>
+</td>
+                    <td class="td text-right"><a href="reports_14.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_34.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00034</a></td>
+                    <td class="td whitespace-nowrap">27 Sep 2026 16:33</td>
+                    <td class="td"><span class="badge bg-violet-100 text-violet-700">Petugas</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 43</span><span class="text-xs text-slate-500">Kiaracondong</span></td>
+                    <td class="td">Parkir di area larangan (rambu)</td>
+                    <td class="td"><span class="badge bg-red-100 text-red-700">Ditolak</span>
+</td>
+                    <td class="td text-right"><a href="reports_34.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_19.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00019</a></td>
+                    <td class="td whitespace-nowrap">24 Sep 2026 16:33</td>
+                    <td class="td"><span class="badge bg-violet-100 text-violet-700">Petugas</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 108</span><span class="text-xs text-slate-500">Sumur Bandung</span></td>
+                    <td class="td">Juru parkir tanpa izin</td>
+                    <td class="td"><span class="badge bg-blue-100 text-blue-700">Terverifikasi</span>
+</td>
+                    <td class="td text-right"><a href="reports_19.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_30.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00030</a></td>
+                    <td class="td whitespace-nowrap">22 Sep 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 32</span><span class="text-xs text-slate-500">Mandalajati</span></td>
+                    <td class="td">Parkir di atas trotoar</td>
+                    <td class="td"><span class="badge bg-green-100 text-green-700">Selesai</span>
+</td>
+                    <td class="td text-right"><a href="reports_30.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_6.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00006</a></td>
+                    <td class="td whitespace-nowrap">03 Sep 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 58</span><span class="text-xs text-slate-500">Cibeunying Kidul</span></td>
+                    <td class="td">Parkir di badan jalan</td>
+                    <td class="td"><span class="badge bg-blue-100 text-blue-700">Terverifikasi</span>
+</td>
+                    <td class="td text-right"><a href="reports_6.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_8.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00008</a></td>
+                    <td class="td whitespace-nowrap">01 Sep 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 91</span><span class="text-xs text-slate-500">Batununggal</span></td>
+                    <td class="td">Parkir ganda</td>
+                    <td class="td"><span class="badge bg-red-100 text-red-700">Ditolak</span>
+</td>
+                    <td class="td text-right"><a href="reports_8.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_9.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00009</a></td>
+                    <td class="td whitespace-nowrap">17 Agt 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 89</span><span class="text-xs text-slate-500">Bandung Wetan</span></td>
+                    <td class="td">Parkir di atas trotoar</td>
+                    <td class="td"><span class="badge bg-indigo-100 text-indigo-700">Sedang diproses</span>
+</td>
+                    <td class="td text-right"><a href="reports_9.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_18.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00018</a></td>
+                    <td class="td whitespace-nowrap">16 Agt 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 76</span><span class="text-xs text-slate-500">Cibeunying Kaler</span></td>
+                    <td class="td">Parkir di atas trotoar</td>
+                    <td class="td"><span class="badge bg-indigo-100 text-indigo-700">Sedang diproses</span>
+</td>
+                    <td class="td text-right"><a href="reports_18.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_29.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00029</a></td>
+                    <td class="td whitespace-nowrap">13 Agt 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 60</span><span class="text-xs text-slate-500">Antapani</span></td>
+                    <td class="td">Parkir menghalangi akses/pagar</td>
+                    <td class="td"><span class="badge bg-indigo-100 text-indigo-700">Sedang diproses</span>
+</td>
+                    <td class="td text-right"><a href="reports_29.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_4.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00004</a></td>
+                    <td class="td whitespace-nowrap">08 Agt 2026 16:33</td>
+                    <td class="td"><span class="badge bg-violet-100 text-violet-700">Petugas</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 135</span><span class="text-xs text-slate-500">Bandung Wetan</span></td>
+                    <td class="td">Parkir di atas trotoar</td>
+                    <td class="td"><span class="badge bg-amber-100 text-amber-700">Menunggu verifikasi</span>
+</td>
+                    <td class="td text-right"><a href="reports_4.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_39.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00039</a></td>
+                    <td class="td whitespace-nowrap">01 Agt 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 76</span><span class="text-xs text-slate-500">Bandung Kulon</span></td>
+                    <td class="td">Parkir menghalangi akses/pagar</td>
+                    <td class="td"><span class="badge bg-amber-100 text-amber-700">Menunggu verifikasi</span>
+</td>
+                    <td class="td text-right"><a href="reports_39.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_32.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00032</a></td>
+                    <td class="td whitespace-nowrap">31 Jul 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 134</span><span class="text-xs text-slate-500">Sukajadi</span></td>
+                    <td class="td">Juru parkir tanpa izin</td>
+                    <td class="td"><span class="badge bg-amber-100 text-amber-700">Menunggu verifikasi</span>
+</td>
+                    <td class="td text-right"><a href="reports_32.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_1.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00001</a></td>
+                    <td class="td whitespace-nowrap">24 Jul 2026 16:33</td>
+                    <td class="td"><span class="badge bg-violet-100 text-violet-700">Petugas</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 108</span><span class="text-xs text-slate-500">Bojongloa Kidul</span></td>
+                    <td class="td">Juru parkir tanpa izin</td>
+                    <td class="td"><span class="badge bg-amber-100 text-amber-700">Menunggu verifikasi</span>
+</td>
+                    <td class="td text-right"><a href="reports_1.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_23.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00023</a></td>
+                    <td class="td whitespace-nowrap">19 Jul 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 139</span><span class="text-xs text-slate-500">Coblong</span></td>
+                    <td class="td">Parkir di badan jalan</td>
+                    <td class="td"><span class="badge bg-red-100 text-red-700">Ditolak</span>
+</td>
+                    <td class="td text-right"><a href="reports_23.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                            <tr class="hover:bg-slate-50">
+                    <td class="td whitespace-nowrap font-mono text-xs"><a href="reports_17.html" class="font-semibold text-slate-900 hover:text-primary-700">RPT-2026-00017</a></td>
+                    <td class="td whitespace-nowrap">16 Jul 2026 16:33</td>
+                    <td class="td"><span class="badge bg-sky-100 text-sky-700">Masyarakat</span>
+</td>
+                    <td class="td"><span class="block max-w-xs truncate">Jl. Contoh No. 115</span><span class="text-xs text-slate-500">Mandalajati</span></td>
+                    <td class="td">Parkir ganda</td>
+                    <td class="td"><span class="badge bg-red-100 text-red-700">Ditolak</span>
+</td>
+                    <td class="td text-right"><a href="reports_17.html" class="btn btn-secondary btn-sm"><i data-lucide="eye" class="size-5 shrink-0 size-4" aria-hidden="true"></i>
+ Detail</a></td>
+                </tr>
+                        </tbody>
+        </table>
+    </div>
+</div>
+<div class="mt-4"><nav role="navigation" aria-label="Pagination Navigation">
+
+        <div class="flex gap-2 items-center justify-between sm:hidden">
+
+                            <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 cursor-not-allowed leading-5 rounded-md dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600">
+                    &laquo; Previous
+                </span>
+            
+                            <a href="reports_p2.html" rel="next" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-800 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-200">
+                    Next &raquo;
+                </a>
+            
+        </div>
+
+        <div class="hidden sm:flex-1 sm:flex sm:gap-2 sm:items-center sm:justify-between">
+
+            <div>
+                <p class="text-sm text-gray-700 leading-5 dark:text-gray-600">
+                    Showing
+                                            <span class="font-medium">1</span>
+                        to
+                        <span class="font-medium">15</span>
+                                        of
+                    <span class="font-medium">40</span>
+                    results
+                </p>
+            </div>
+
+            <div>
+                <span class="inline-flex rtl:flex-row-reverse shadow-sm rounded-md">
+
+                    
+                                            <span aria-disabled="true" aria-label="&amp;laquo; Previous">
+                            <span class="inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-not-allowed rounded-l-md leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400" aria-hidden="true">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </span>
+                    
+                    
+                                            
+                        
+                        
+                                                                                                                        <span aria-current="page">
+                                        <span class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 cursor-default leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">1</span>
+                                    </span>
+                                                                                                                                <a href="reports_p2.html" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 2">
+                                        2
+                                    </a>
+                                                                                                                                <a href="#demo-off" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 3">
+                                        3
+                                    </a>
+                                                                                                        
+                    
+                                            <a href="reports_p2.html" rel="next" class="inline-flex items-center px-2 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md leading-5 hover:text-gray-400 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:active:bg-gray-700 dark:focus:border-blue-800 dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-gray-300" aria-label="Next &amp;raquo;">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                                    </span>
+            </div>
+        </div>
+    </nav>
+</div>
+        </main>
+        <footer class="px-6 py-4 text-center text-xs text-slate-400">
+            Parkir Tertib &middot; Sistem Informasi Pendataan, Pemetaan, dan Penertiban Parkir Liar
+        </footer>
+    </div>
+
+    </body>
+</html>

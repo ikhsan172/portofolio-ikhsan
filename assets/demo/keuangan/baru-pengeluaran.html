@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="demo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+<title>Tambah transaksi · Keuangan Perusahaan</title>
+    </head>
+<body class="bg-[#f6f7f9] font-sans text-ink antialiased">
+
+<header class="sticky top-0 z-30 flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3 lg:hidden">
+    <span class="text-lg font-semibold">Keuangan Perusahaan</span>
+    <button type="button" id="menuBtn" class="rounded-lg p-2 hover:bg-slate-100" aria-label="Buka menu"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+</button>
+</header>
+
+<aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-72 -translate-x-full flex-col border-r border-slate-200 bg-white transition-transform lg:translate-x-0">
+    <div class="flex items-center gap-3 px-7 pb-6 pt-8">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500 text-xl font-bold text-white">K</span>
+        <span class="text-xl font-semibold tracking-tight">Keuangan Perusahaan</span>
+    </div>
+
+    <nav class="flex-1 space-y-1 overflow-y-auto px-4">
+        <a href="index.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+    <span class="flex-1">Dashboard</span>
+</a>
+        <a href="transaksi-pemasukan.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
+    <span class="flex-1">Pemasukan</span>
+</a>
+        <a href="transaksi-pengeluaran.html"  aria-current="page"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition bg-brand-50 text-brand-700">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181"/></svg>
+    <span class="flex-1">Pengeluaran</span>
+</a>
+        <a href="laporan.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+    <span class="flex-1">Laporan</span>
+</a>
+
+                    <div class="mx-2 my-4 border-t border-slate-200"></div>
+            <a href="kategori.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3zM6 6h.008v.008H6V6z"/></svg>
+    <span class="flex-1">Kategori</span>
+</a>
+            <a href="pengguna.html"    class="flex items-center gap-3 rounded-lg px-4 py-3 text-[15px] font-medium transition text-slate-500 hover:bg-slate-50 hover:text-ink">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+    <span class="flex-1">Pengguna</span>
+</a>
+            </nav>
+
+    <div class="border-t border-slate-200 p-4">
+        <div class="flex items-center gap-3">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-100 font-semibold text-brand-800">A</span>
+            <div class="min-w-0 flex-1">
+                <p class="truncate text-sm font-semibold">Administrator</p>
+                <p class="truncate text-xs text-slate-500">Admin · admin@perusahaan.test</p>
+            </div>
+            <form method="POST" action="login.html" data-nav="login.html">
+                <input type="hidden" name="_token" value="EanT7I84vgUYg0vfPS4yE7FqWwUfGdaY1PEY9GN5" autocomplete="off">                <button class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-ink" title="Keluar" aria-label="Keluar"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/></svg>
+</button>
+            </form>
+        </div>
+    </div>
+</aside>
+<div id="backdrop" class="fixed inset-0 z-30 hidden bg-black/30 lg:hidden"></div>
+
+<main class="lg:pl-72">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-8 sm:py-8">
+                
+        <div class="mx-auto max-w-2xl">
+    <h1 class="mb-6 text-2xl font-semibold">Tambah transaksi</h1>
+
+    <form method="POST" action="#" class="card space-y-5">
+        <input type="hidden" name="_token" value="EanT7I84vgUYg0vfPS4yE7FqWwUfGdaY1PEY9GN5" autocomplete="off">        
+        <fieldset>
+            <legend class="label">Jenis transaksi</legend>
+            <div class="grid grid-cols-2 gap-3">
+                                    <label class="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-300 px-4 py-3 text-sm font-medium has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50 has-[:checked]:text-brand-800">
+                        <input type="radio" name="type" value="income" class="text-brand-600 focus:ring-brand-500" > Pemasukan
+                    </label>
+                                    <label class="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-300 px-4 py-3 text-sm font-medium has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50 has-[:checked]:text-brand-800">
+                        <input type="radio" name="type" value="expense" class="text-brand-600 focus:ring-brand-500" checked> Pengeluaran
+                    </label>
+                            </div>
+                    </fieldset>
+
+        <div>
+            <label class="label" for="category_id">Kategori</label>
+            <select id="category_id" name="category_id" class="input" required>
+                <option value="">Pilih kategori</option>
+                                    <option value="5" data-type="expense" >Gaji Karyawan</option>
+                                    <option value="2" data-type="income" >Jasa &amp; Konsultasi</option>
+                                    <option value="7" data-type="expense" >Listrik &amp; Internet</option>
+                                    <option value="8" data-type="expense" >Operasional</option>
+                                    <option value="12" data-type="expense" >Pajak</option>
+                                    <option value="10" data-type="expense" >Pemasaran</option>
+                                    <option value="3" data-type="income" >Pendapatan Bunga</option>
+                                    <option value="4" data-type="income" >Pendapatan Lain-lain</option>
+                                    <option value="1" data-type="income" >Penjualan Produk</option>
+                                    <option value="11" data-type="expense" >Perlengkapan Kantor</option>
+                                    <option value="6" data-type="expense" >Sewa Kantor</option>
+                                    <option value="9" data-type="expense" >Transportasi</option>
+                            </select>
+                    </div>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+                <label class="label" for="amount">Jumlah (Rp)</label>
+                <input id="amount" name="amount" type="number" min="1" step="0.01" class="input" required
+                       value="">
+                            </div>
+            <div>
+                <label class="label" for="transaction_date">Tanggal</label>
+                <input id="transaction_date" name="transaction_date" type="date" class="input" required
+                       value="2026-11-01">
+                            </div>
+        </div>
+
+        <div>
+            <label class="label" for="reference">No. referensi / invoice <span class="font-normal text-slate-400">(opsional)</span></label>
+            <input id="reference" name="reference" type="text" maxlength="100" class="input" value="">
+                    </div>
+
+        <div>
+            <label class="label" for="description">Deskripsi <span class="font-normal text-slate-400">(opsional)</span></label>
+            <input id="description" name="description" type="text" maxlength="255" class="input" value="">
+                    </div>
+
+        <div class="flex justify-end gap-3 pt-2">
+            <a href="transaksi-pengeluaran.html" class="btn-light">Batal</a>
+            <button class="btn-primary">Simpan transaksi</button>
+        </div>
+    </form>
+</div>
+    </div>
+</main>
+
+<script>
+    const sb = document.getElementById('sidebar'), bd = document.getElementById('backdrop');
+    const toggle = () => { sb.classList.toggle('-translate-x-full'); bd.classList.toggle('hidden'); };
+    document.getElementById('menuBtn')?.addEventListener('click', toggle);
+    bd.addEventListener('click', toggle);
+</script>
+<script>
+const sel = document.getElementById('category_id');
+function syncCategories() {
+    const t = document.querySelector('input[name=type]:checked')?.value;
+    [...sel.options].forEach(o => {
+        if (!o.value) return;
+        const hide = o.dataset.type !== t;
+        o.hidden = hide; o.disabled = hide;
+    });
+    const cur = sel.selectedOptions[0];
+    if (cur && cur.value && cur.dataset.type !== t) sel.value = '';
+}
+document.querySelectorAll('input[name=type]').forEach(r => r.addEventListener('change', syncCategories));
+syncCategories();
+</script>
+<style>.demo-badge{position:fixed;right:12px;bottom:12px;z-index:99999;background:rgba(15,23,42,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none}</style>
+<div class="demo-badge">Mode demo &middot; data contoh</div>
+<script>
+document.addEventListener('submit',function(e){
+  e.preventDefault();
+  var f=e.target,nav=f.getAttribute('data-nav');
+  if(nav){location.href=nav;return;}
+  alert('Ini versi demo statis. Perubahan data tidak disimpan.');
+},true);
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href="#demo-off"]');
+  if(a){e.preventDefault();alert('Fitur ini dinonaktifkan pada versi demo statis.');}
+});
+</script>
+</body>
+</html>
