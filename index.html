@@ -40,23 +40,50 @@
     <!-- Navigation Header -->
     <header>
       <nav class="nav-bar">
-        <ul id="nav">
+        <a href="#Home" class="nav-brand" aria-label="IkhsanDev Homepage">
+          <span class="brand-name">IkhsanDev.</span>
+        </a>
+        <ul id="nav" class="nav-links">
           <li><a href="#Home" class="on">Home</a></li>
           <li><a href="#About">About</a></li>
           <li><a href="#Portfolio">Portfolio</a></li>
           <li><a href="#Contact">Contact</a></li>
         </ul>
-        <span class="nav-divider" aria-hidden="true"></span>
-        <button id="sfxToggle" class="sfx-btn active" aria-label="Nyalakan atau matikan suara SFX" title="Suara SFX: Aktif (Klik untuk matikan)" aria-pressed="true">
-          <i data-lucide="volume-2" id="sfxIcon"></i>
-        </button>
+        <div class="nav-actions">
+          <button id="sfxToggle" class="sfx-btn active" aria-label="Nyalakan atau matikan suara SFX" title="Suara SFX: Aktif (Klik untuk matikan)" aria-pressed="true">
+            <i data-lucide="volume-2" id="sfxIcon"></i>
+          </button>
+          <span class="nav-divider mobile-only" aria-hidden="true"></span>
+          <button id="menuToggle" class="menu-btn mobile-only" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobileNav">
+            <i data-lucide="menu" id="menuIcon"></i>
+          </button>
+        </div>
       </nav>
+
+      <!-- Mobile Navigation Drawer / Dropdown -->
+      <div id="mobileNav" class="mobile-nav" hidden aria-hidden="true">
+        <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+        <div class="mobile-nav-panel">
+          <div class="mobile-nav-header">
+            <span class="mobile-nav-title">Menu Navigasi</span>
+            <button id="menuClose" class="menu-close-btn" aria-label="Tutup menu">
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+          <ul class="mobile-nav-list">
+            <li><a href="#Home" class="mobile-nav-link on"><i data-lucide="home"></i><span>Home</span></a></li>
+            <li><a href="#About" class="mobile-nav-link"><i data-lucide="user"></i><span>About</span></a></li>
+            <li><a href="#Portfolio" class="mobile-nav-link"><i data-lucide="briefcase"></i><span>Portfolio</span></a></li>
+            <li><a href="#Contact" class="mobile-nav-link"><i data-lucide="mail"></i><span>Contact</span></a></li>
+          </ul>
+        </div>
+      </div>
     </header>
 
     <main>
       <!-- Hero Section -->
       <section id="Home" class="scroll-fx hero-scroll-fx">
-        <div>
+        <div class="hero-content">
           <h1><span class="grad">Welcome to</span>My Portfolio</h1>
           <p class="type" id="type"></p>
           <div class="lead">

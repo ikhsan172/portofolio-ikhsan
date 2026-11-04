@@ -556,7 +556,8 @@
   // 7. Navigation ScrollSpy
   // --------------------------------------------------------------------------
   function initScrollSpy() {
-    var links = document.querySelectorAll('#nav a');
+    var desktopLinks = document.querySelectorAll('#nav a');
+    var mobileLinks = document.querySelectorAll('.mobile-nav-link');
     var sectionIds = ['Home', 'About', 'Portfolio', 'Contact'];
     var sections = sectionIds.map(function (id) { return document.getElementById(id); });
 
@@ -568,13 +569,80 @@
           currentIndex = idx;
         }
       });
-      links.forEach(function (link, idx) {
+      desktopLinks.forEach(function (link, idx) {
+        link.classList.toggle('on', idx === currentIndex);
+      });
+      mobileLinks.forEach(function (link, idx) {
         link.classList.toggle('on', idx === currentIndex);
       });
     }
 
     window.addEventListener('scroll', spy, { passive: true });
     spy();
+  }
+
+  // --------------------------------------------------------------------------
+  // Mobile Navigation Drawer Toggle & Click Handlers
+  // --------------------------------------------------------------------------
+  function initMobileMenu() {
+    var menuToggle = document.getElementById('menuToggle');
+    var menuClose = document.getElementById('menuClose');
+    var mobileNav = document.getElementById('mobileNav');
+    var backdrop = document.getElementById('mobileNavBackdrop');
+    var mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (!menuToggle || !mobileNav) return;
+
+    function openMenu() {
+      mobileNav.hidden = false;
+      mobileNav.setAttribute('aria-hidden', 'false');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('mobile-nav-lock');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function closeMenu() {
+      mobileNav.classList.add('closing');
+      setTimeout(function () {
+        mobileNav.hidden = true;
+        mobileNav.setAttribute('aria-hidden', 'true');
+        mobileNav.classList.remove('closing');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('mobile-nav-lock');
+      }, 200);
+    }
+
+    menuToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (mobileNav.hidden) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+    });
+
+    if (menuClose) {
+      menuClose.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeMenu();
+      });
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeMenu);
+    }
+
+    mobileLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeMenu();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !mobileNav.hidden) {
+        closeMenu();
+      }
+    });
   }
 
   // --------------------------------------------------------------------------
@@ -1044,6 +1112,7 @@
     initTabs();
     initDemoModal();
     initScrollSpy();
+    initMobileMenu();
     initForm();
     initAboutPhotoMask();
     initSFX();
