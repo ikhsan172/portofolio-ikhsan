@@ -1121,6 +1121,7 @@
     var loader = document.getElementById('loadingScreen');
     var bar = document.getElementById('loaderBarFill');
     var percent = document.getElementById('loaderPercent');
+    var video = loader ? loader.querySelector('.lightning-video') : null;
 
     if (!loader || !bar || !percent) {
       if (typeof onComplete === 'function') onComplete();
@@ -1129,12 +1130,21 @@
 
     if (reduceMotion) {
       loader.style.display = 'none';
+      if (video) { try { video.pause(); } catch (e) {} }
       if (typeof onComplete === 'function') onComplete();
       return;
     }
 
+    // Pastikan video petir mulai diputar secara mulus
+    if (video) {
+      var playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(function () {});
+      }
+    }
+
     var progress = 0;
-    var duration = 1900; // ~1.9s durasi loading elegan & mulus
+    var duration = 2100; // ~2.1s agar siklus sambaran petir video terlihat mantap
     var startTime = performance.now();
 
     function update(now) {
@@ -1156,6 +1166,9 @@
           loader.classList.add('loaded');
           setTimeout(function () {
             loader.style.display = 'none';
+            if (video) {
+              try { video.pause(); } catch (e) {}
+            }
             if (typeof onComplete === 'function') {
               onComplete();
             }
