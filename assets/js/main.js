@@ -669,28 +669,6 @@
 
     var submitBtn = form.querySelector('button[type="submit"]');
     var statusMsg = document.getElementById('formStatus');
-    var nextInput = document.getElementById('_next');
-
-    // Dynamic _next redirect URL
-    if (nextInput) {
-      try {
-        nextInput.value = window.location.origin + window.location.pathname + '?submitted=true#Contact';
-      } catch (err) {}
-    }
-
-    // Check if redirected back after successful form submission
-    if (window.location.search.indexOf('submitted=true') !== -1) {
-      if (statusMsg) {
-        statusMsg.style.display = 'block';
-        statusMsg.className = 'form-status success';
-        statusMsg.textContent = 'Pesan Anda telah berhasil dikirim ke email saya. Terima kasih!';
-      }
-      if (window.history && window.history.replaceState) {
-        var cleanUrl = window.location.pathname + window.location.hash;
-        window.history.replaceState(null, '', cleanUrl);
-      }
-    }
-
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -715,57 +693,58 @@
         statusMsg.className = 'form-status';
       }
 
-      // 1. Coba kirim via AJAX terlebih dahulu
-      fetch('https://formsubmit.co/ajax/ikhsansaputra357@gmail.com', {
+      // Kirim via Web3Forms AJAX
+      fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
+          access_key: '6e0638ca-7e70-461b-bc8a-b72657cd9a5a',
           name: name,
           email: email,
           message: message,
-          _subject: 'Pesan Baru dari Portofolio: ' + name,
-          _template: 'table',
-          _captcha: 'false'
+          subject: 'Pesan Baru dari Portofolio: ' + name,
+          from_name: 'Portofolio Ikhsan'
         })
       })
       .then(function (res) {
-        return res.json().then(function (data) {
-          if (!res.ok || (data && (data.success === 'false' || data.success === false))) {
-            throw new Error((data && data.message) ? data.message : 'Gagal mengirim pesan');
-          }
-          return data;
-        });
+        return res.json();
       })
-      .then(function () {
-        if (submitBtn) {
-          submitBtn.innerHTML = '<span>Terkirim!</span>';
-        }
-        if (statusMsg) {
-          statusMsg.style.display = 'block';
-          statusMsg.className = 'form-status success';
-          statusMsg.textContent = 'Pesan Anda telah berhasil dikirim ke email saya. Terima kasih!';
-        }
-        form.reset();
-        setTimeout(function () {
+      .then(function (data) {
+        if (data && data.success) {
+          // Sukses
           if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
+            submitBtn.innerHTML = '<span>Terkirim! ✓</span>';
           }
-        }, 3500);
+          if (statusMsg) {
+            statusMsg.style.display = 'block';
+            statusMsg.className = 'form-status success';
+            statusMsg.textContent = 'Pesan Anda telah berhasil dikirim ke email saya. Terima kasih!';
+          }
+          form.reset();
+          setTimeout(function () {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalBtnText;
+            }
+          }, 3500);
+        } else {
+          throw new Error(data && data.message ? data.message : 'Gagal mengirim');
+        }
       })
-      .catch(function () {
-        // 2. Jika AJAX gagal (misal diblokir Brave Shields / adblocker / belum aktivasi 1x),
-        // otomatis fallback ke submit form native browser agar pesan langsung terkirim
-        // dan jika belum aktivasi, FormSubmit langsung menampilkan tombol aktivasi di layar!
+      .catch(function (err) {
+        // Fallback: buka mailto jika AJAX gagal (misal diblokir adblocker)
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        }
         if (statusMsg) {
           statusMsg.style.display = 'block';
-          statusMsg.className = 'form-status info';
-          statusMsg.textContent = 'Sedang menghubungkan ke server pengirim email...';
+          statusMsg.className = 'form-status error';
+          statusMsg.innerHTML = 'Gagal mengirim otomatis. <a href="mailto:ikhsansaputra357@gmail.com?subject=' + encodeURIComponent('Pesan dari ' + name) + '&body=' + encodeURIComponent('Nama: ' + name + '\nEmail: ' + email + '\n\n' + message) + '" style="color:var(--blue2);text-decoration:underline;">Klik di sini untuk kirim via email</a>.';
         }
-        form.submit();
       });
     });
   }
