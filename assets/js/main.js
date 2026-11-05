@@ -710,10 +710,18 @@
         })
       })
       .then(function (res) {
-        if (res.ok) {
-          return res.json();
-        }
-        throw new Error('Gagal mengirim');
+        return res.json().then(function (data) {
+          if (!res.ok || (data && (data.success === 'false' || data.success === false))) {
+            var msg = (data && data.message) ? data.message : 'Gagal mengirim pesan';
+            var err = new Error(msg);
+            err.data = data;
+            throw err;
+          }
+          return data;
+        }).catch(function (e) {
+          if (e.data) throw e;
+          throw new Error('Gagal memproses respon server');
+        });
       })
       .then(function () {
         if (submitBtn) {
@@ -732,7 +740,7 @@
           }
         }, 3500);
       })
-      .catch(function () {
+      .catch(function (err) {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalBtnText;
@@ -740,7 +748,15 @@
         if (statusMsg) {
           statusMsg.style.display = 'block';
           statusMsg.className = 'form-status error';
-          statusMsg.innerHTML = 'Tidak dapat terkirim otomatis. <a href="mailto:ikhsansaputra357@gmail.com?subject=' + encodeURIComponent('Pesan dari ' + name) + '&body=' + encodeURIComponent(message) + '" style="color:var(--blue2);text-decoration:underline;">Klik di sini untuk mengirim manual via email</a>.';
+
+          var rawMsg = err && err.message ? err.message.toLowerCase() : '';
+          var isActivationNeeded = rawMsg.indexOf('activate') !== -1 || rawMsg.indexOf('confirm') !== -1 || rawMsg.indexOf('disabled') !== -1;
+
+          if (isActivationNeeded) {
+            statusMsg.innerHTML = '<strong>Aktivasi Diperlukan (1x):</strong> FormSubmit telah mengirimkan email aktivasi ke <b>ikhsansaputra357@gmail.com</b>. Silakan buka Gmail (cek inbox atau folder spam) lalu klik tombol <b>"Activate Form"</b> agar form aktif secara permanen.<br><br>Atau <a href="mailto:ikhsansaputra357@gmail.com?subject=' + encodeURIComponent('Pesan dari ' + name) + '&body=' + encodeURIComponent(message) + '" style="color:var(--blue2);text-decoration:underline;">klik di sini untuk kirim manual via email</a>.';
+          } else {
+            statusMsg.innerHTML = 'Tidak dapat terkirim otomatis. <a href="mailto:ikhsansaputra357@gmail.com?subject=' + encodeURIComponent('Pesan dari ' + name) + '&body=' + encodeURIComponent(message) + '" style="color:var(--blue2);text-decoration:underline;">Klik di sini untuk mengirim manual via email</a>.';
+          }
         }
       });
     });
