@@ -1,3 +1,4 @@
 <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-  <polygon points="64,18 122,110 6,110" fill="#FFF"/>
+  <!-- Vercel triangle, padded and centered in 128x128 -->
+  <polygon points="64,16 116,112 12,112" fill="#FFF"/>
 </svg>

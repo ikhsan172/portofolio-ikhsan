@@ -1,8 +1,12 @@
-<svg viewBox="-11.5 -10.23174 23 20.46348" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="0" cy="0" r="2.05" fill="#61dafb"/>
-  <g stroke="#61dafb" stroke-width="1" fill="none">
-    <ellipse rx="11" ry="4.2"/>
-    <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
-    <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- React atom logo, centered in 128x128 -->
+  <circle cx="64" cy="64" r="11" fill="#61dafb"/>
+  <g stroke="#61dafb" stroke-width="6" fill="none">
+    <!-- horizontal ellipse -->
+    <ellipse cx="64" cy="64" rx="60" ry="23"/>
+    <!-- 60-degree rotated -->
+    <ellipse cx="64" cy="64" rx="60" ry="23" transform="rotate(60 64 64)"/>
+    <!-- 120-degree rotated -->
+    <ellipse cx="64" cy="64" rx="60" ry="23" transform="rotate(120 64 64)"/>
   </g>
 </svg>

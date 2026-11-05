@@ -311,21 +311,31 @@
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
     if (reduceMotion) return;
 
+    // Matikan scroll blur di layar HP / mobile (<= 820px) agar tampilan tidak blur saat discroll
+    if (window.innerWidth <= 820) {
+      ScrollTrigger.getAll().forEach(function (st) {
+        if (st.trigger && st.trigger.classList && st.trigger.classList.contains('scroll-fx')) {
+          st.kill();
+        }
+      });
+      gsap.set('.scroll-fx', { clearProps: 'all' });
+      return;
+    }
+
     gsap.registerPlugin(ScrollTrigger);
 
     var elements = document.querySelectorAll('.scroll-fx');
     if (!elements.length) return;
 
     elements.forEach(function (el) {
-      // 1. Hero element at the very top of the page
-      // Starts sharp at scroll = 0, and blurs/fades/shifts as it exits top edge
+      // 1. Hero element at the very top of the page (desktop only, halus & tidak blur parah)
       if (el.classList.contains('hero-scroll-fx')) {
         gsap.fromTo(el,
           { opacity: 1, filter: 'blur(0px)', y: 0 },
           {
-            opacity: 0.15,
-            filter: 'blur(14px)',
-            y: -18,
+            opacity: 0.35,
+            filter: 'blur(3px)',
+            y: -14,
             ease: 'power1.in',
             scrollTrigger: {
               trigger: el,
@@ -340,10 +350,9 @@
       }
 
       // 2. Footer element at the very bottom of the page
-      // Enters blurred & shifted from bottom, becomes sharp when bottom of page is reached
       if (el.classList.contains('footer-scroll-fx')) {
         gsap.fromTo(el,
-          { opacity: 0.15, filter: 'blur(14px)', y: 18 },
+          { opacity: 0.35, filter: 'blur(3px)', y: 14 },
           {
             opacity: 1,
             filter: 'blur(0px)',
@@ -362,9 +371,6 @@
       }
 
       // 3. All standard content elements:
-      // Entering from bottom (blur 14px, opacity 0.15, translateY 18px)
-      // -> Sharp at center (blur 0px, opacity 1, translateY 0px)
-      // -> Exiting to top (blur 14px, opacity 0.15, translateY -18px)
       var tl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
@@ -376,20 +382,29 @@
       });
 
       tl.fromTo(el,
-        { opacity: 0.15, filter: 'blur(14px)', y: 18 },
+        { opacity: 0.35, filter: 'blur(3px)', y: 14 },
         { opacity: 1,    filter: 'blur(0px)',  y: 0,   ease: 'power1.out', duration: 0.3 }
       )
       .to(el,
         { opacity: 1,    filter: 'blur(0px)',  y: 0,   ease: 'none',       duration: 0.4 }
       )
       .to(el,
-        { opacity: 0.15, filter: 'blur(14px)', y: -18, ease: 'power1.in',  duration: 0.3 }
+        { opacity: 0.35, filter: 'blur(3px)', y: -14, ease: 'power1.in',  duration: 0.3 }
       );
     });
 
     // Clean initial calculation
     ScrollTrigger.refresh();
   }
+
+  // Handle runtime resize to enable/disable scroll blur seamlessly
+  var scrollBlurResizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(scrollBlurResizeTimer);
+    scrollBlurResizeTimer = setTimeout(function () {
+      initScrollBlur();
+    }, 150);
+  });
 
   // Handle runtime changes to prefers-reduced-motion
   var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');

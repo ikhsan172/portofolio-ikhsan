@@ -1,14 +1,9 @@
-<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-  <path d="M68.5 4.8C66.8 1.8 62.7.9 59.8 2.6c-1.4.8-2.4 2.1-2.8 3.6L41.3 64.9h40.4L68.5 4.8z" fill="url(#supa-g1)"/>
-  <path d="M59.5 123.2c1.7 3 5.8 3.9 8.7 2.2 1.4-.8 2.4-2.1 2.8-3.6l15.7-58.7H46.3l13.2 60.1z" fill="url(#supa-g2)"/>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L2.203 12.424l-.401.562a1.04 1.04 0 0 0 .836 1.659H12v8.959a.396.396 0 0 0 .716.233l9.081-12.261.401-.562a1.04 1.04 0 0 0-.836-1.66z" fill="url(#supa-grad)"/>
   <defs>
-    <linearGradient id="supa-g1" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="supa-grad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#249361"/>
       <stop offset="100%" stop-color="#3ECF8E"/>
-    </linearGradient>
-    <linearGradient id="supa-g2" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#3ECF8E"/>
-      <stop offset="100%" stop-color="#249361"/>
     </linearGradient>
   </defs>
 </svg>
