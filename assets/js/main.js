@@ -1115,15 +1115,64 @@
   }
 
   // --------------------------------------------------------------------------
+  // Loading Screen Animation (Welcome To My Portfolio Website + Lightning)
+  // --------------------------------------------------------------------------
+  function initLoader(onComplete) {
+    var loader = document.getElementById('loadingScreen');
+    var bar = document.getElementById('loaderBarFill');
+    var percent = document.getElementById('loaderPercent');
+
+    if (!loader || !bar || !percent) {
+      if (typeof onComplete === 'function') onComplete();
+      return;
+    }
+
+    if (reduceMotion) {
+      loader.style.display = 'none';
+      if (typeof onComplete === 'function') onComplete();
+      return;
+    }
+
+    var progress = 0;
+    var duration = 1900; // ~1.9s durasi loading elegan & mulus
+    var startTime = performance.now();
+
+    function update(now) {
+      var elapsed = now - startTime;
+      var raw = Math.min(elapsed / duration, 1);
+      // Easing curve agar kenaikan persentase berasa natural & dinamis
+      var ease = 1 - Math.pow(1 - raw, 2.5);
+      progress = Math.min(Math.round(ease * 100), 100);
+
+      bar.style.width = progress + '%';
+      percent.textContent = progress + '%';
+
+      if (raw < 1) {
+        requestAnimationFrame(update);
+      } else {
+        bar.style.width = '100%';
+        percent.textContent = '100%';
+        setTimeout(function () {
+          loader.classList.add('loaded');
+          setTimeout(function () {
+            loader.style.display = 'none';
+            if (typeof onComplete === 'function') {
+              onComplete();
+            }
+          }, 650);
+        }, 240);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  // --------------------------------------------------------------------------
   // Initialize Everything on DOM Ready
   // --------------------------------------------------------------------------
   function init() {
     initIcons();
-    initTyping();
     initBackground();
-    initGSAP();
-    initScrollBlur();
-    initStatCounters();
     initTabs();
     initDemoModal();
     initScrollSpy();
@@ -1131,6 +1180,14 @@
     initForm();
     initAboutPhotoMask();
     initSFX();
+
+    // Tampilkan loading screen cinematic terlebih dahulu, kemudian picu animasi hero saat selesai
+    initLoader(function () {
+      initTyping();
+      initGSAP();
+      initScrollBlur();
+      initStatCounters();
+    });
   }
 
   if (document.readyState === 'loading') {

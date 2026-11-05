@@ -25,6 +25,52 @@
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
+  <!-- Cinematic Loading Screen (Welcome To My Portfolio Website with Electric Lightning & Progress Bar) -->
+  <div id="loadingScreen" class="loading-screen" aria-live="polite" aria-label="Memuat portofolio">
+    <!-- Electric Lightning FX Background -->
+    <div class="loader-lightning" aria-hidden="true">
+      <svg class="lightning-svg" viewBox="0 0 400 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <filter id="lightningGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur1"/>
+            <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur2"/>
+            <feMerge>
+              <feMergeNode in="blur2"/>
+              <feMergeNode in="blur1"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <!-- Main Lightning Bolt -->
+        <path class="bolt-main" d="M190 0 L210 110 L180 180 L230 290 L170 380 L220 490 L160 590 L210 710 L180 810 L200 900" />
+        <!-- Electric Branches -->
+        <path class="bolt-branch" d="M210 110 L255 165 L235 210" />
+        <path class="bolt-branch" d="M230 290 L275 345 L255 395" />
+        <path class="bolt-branch" d="M170 380 L125 435 L145 485" />
+        <path class="bolt-branch" d="M220 490 L265 555 L245 615" />
+        <path class="bolt-branch" d="M160 590 L115 645 L135 695" />
+      </svg>
+    </div>
+
+    <!-- Center Content -->
+    <div class="loader-content">
+      <h2 class="loader-title">
+        <span class="loader-welcome">Welcome To My</span>
+        <span class="loader-sub">Portofolio Website</span>
+      </h2>
+
+      <div class="loader-bar-wrap">
+        <div class="loader-bar-track">
+          <div id="loaderBarFill" class="loader-bar-fill"></div>
+        </div>
+        <div class="loader-meta">
+          <span class="loader-status">Loading<span class="loader-dots">...</span></span>
+          <span id="loaderPercent" class="loader-percent">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 3D Canvas Background & Meteors -->
   <div class="fx" aria-hidden="true">
     <canvas id="stars"></canvas>
