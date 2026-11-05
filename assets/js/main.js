@@ -661,7 +661,7 @@
   }
 
   // --------------------------------------------------------------------------
-  // 7. Contact Form Handler (FormSubmit AJAX with Automatic Email Delivery)
+  // 7. Contact Form Handler (FormSubmit with Auto AJAX & Native Fallback)
   // --------------------------------------------------------------------------
   function initForm() {
     var form = document.getElementById('f');
@@ -669,6 +669,27 @@
 
     var submitBtn = form.querySelector('button[type="submit"]');
     var statusMsg = document.getElementById('formStatus');
+    var nextInput = document.getElementById('_next');
+
+    // Dynamic _next redirect URL
+    if (nextInput) {
+      try {
+        nextInput.value = window.location.origin + window.location.pathname + '?submitted=true#Contact';
+      } catch (err) {}
+    }
+
+    // Check if redirected back after successful form submission
+    if (window.location.search.indexOf('submitted=true') !== -1) {
+      if (statusMsg) {
+        statusMsg.style.display = 'block';
+        statusMsg.className = 'form-status success';
+        statusMsg.textContent = 'Pesan Anda telah berhasil dikirim ke email saya. Terima kasih!';
+      }
+      if (window.history && window.history.replaceState) {
+        var cleanUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState(null, '', cleanUrl);
+      }
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -694,6 +715,7 @@
         statusMsg.className = 'form-status';
       }
 
+      // 1. Coba kirim via AJAX terlebih dahulu
       fetch('https://formsubmit.co/ajax/ikhsansaputra357@gmail.com', {
         method: 'POST',
         headers: {
@@ -712,15 +734,9 @@
       .then(function (res) {
         return res.json().then(function (data) {
           if (!res.ok || (data && (data.success === 'false' || data.success === false))) {
-            var msg = (data && data.message) ? data.message : 'Gagal mengirim pesan';
-            var err = new Error(msg);
-            err.data = data;
-            throw err;
+            throw new Error((data && data.message) ? data.message : 'Gagal mengirim pesan');
           }
           return data;
-        }).catch(function (e) {
-          if (e.data) throw e;
-          throw new Error('Gagal memproses respon server');
         });
       })
       .then(function () {
@@ -740,24 +756,16 @@
           }
         }, 3500);
       })
-      .catch(function (err) {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnText;
-        }
+      .catch(function () {
+        // 2. Jika AJAX gagal (misal diblokir Brave Shields / adblocker / belum aktivasi 1x),
+        // otomatis fallback ke submit form native browser agar pesan langsung terkirim
+        // dan jika belum aktivasi, FormSubmit langsung menampilkan tombol aktivasi di layar!
         if (statusMsg) {
           statusMsg.style.display = 'block';
-          statusMsg.className = 'form-status error';
-
-          var rawMsg = err && err.message ? err.message.toLowerCase() : '';
-          var isActivationNeeded = rawMsg.indexOf('activate') !== -1 || rawMsg.indexOf('confirm') !== -1 || rawMsg.indexOf('disabled') !== -1;
-
-          if (isActivationNeeded) {
-            statusMsg.innerHTML = '<strong>Aktivasi Diperlukan (1x):</strong> FormSubmit telah mengirimkan email aktivasi ke <b>ikhsansaputra357@gmail.com</b>. Silakan buka Gmail (cek inbox atau folder spam) lalu klik tombol <b>"Activate Form"</b> agar form aktif secara permanen.<br><br>Atau <a href="mailto:ikhsansaputra357@gmail.com?subject=' + encodeURIComponent('Pesan dari ' + name) + '&body=' + encodeURIComponent(message) + '" style="color:var(--blue2);text-decoration:underline;">klik di sini untuk kirim manual via email</a>.';
-          } else {
-            statusMsg.innerHTML = 'Tidak dapat terkirim otomatis. <a href="mailto:ikhsansaputra357@gmail.com?subject=' + encodeURIComponent('Pesan dari ' + name) + '&body=' + encodeURIComponent(message) + '" style="color:var(--blue2);text-decoration:underline;">Klik di sini untuk mengirim manual via email</a>.';
-          }
+          statusMsg.className = 'form-status info';
+          statusMsg.textContent = 'Sedang menghubungkan ke server pengirim email...';
         }
+        form.submit();
       });
     });
   }
